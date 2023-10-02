@@ -1,0 +1,726 @@
+        -:    0:Source:C:/Users/mdds2/OneDrive/Escritorio/UBA/Algo I/TPI/tpi-template-alumnos/template-alumnos/tests/cambiarBanderitaTEST.cpp
+        -:    0:Graph:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\tests\cambiarBanderitaTEST.gcno
+        -:    0:Data:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\tests\cambiarBanderitaTEST.gcda
+        -:    0:Runs:1
+        -:    1:// Tests para la función cambiarBanderita.
+        -:    2:// Ver el archovo README.md para ayuda
+        -:    3:
+        -:    4:
+        -:    5:#include "../ejercicios.h"
+        -:    6:#include "../auxiliares.h"
+        -:    7:#include "gtest/gtest.h"
+        -:    8:
+        -:    9:using namespace std;
+        -:   10:
+        -:   11:// ┌───┬───┬───┬───┬───┐
+        -:   12:// │ 1 │ * │ 2 │ 1 │ 1 │
+        -:   13:// ├───┼───┼───┼───┼───┤
+        -:   14:// │ 2 │ 2 │ 3 │ * │ 1 │
+        -:   15:// ├───┼───┼───┼───┼───┤
+        -:   16:// │ 1 │ * │ 2 │ 1 │ 1 │
+        -:   17:// ├───┼───┼───┼───┼───┤
+        -:   18:// │ 2 │ 3 │ 2 │ 1 │ 0 │
+        -:   19:// ├───┼───┼───┼───┼───┤
+        -:   20:// │ * │ 2 │ * │ 1 │ 0 │
+        -:   21:// └───┴───┴───┴───┴───┘
+        -:   22:
+        -:   23:tablero t_cambiar_Banderita = {
+        -:   24:        { cVACIA,  cMINA,  cVACIA, cVACIA, cVACIA },
+        -:   25:        { cVACIA, cVACIA, cVACIA, cMINA,  cVACIA },
+        -:   26:        { cVACIA, cMINA,  cVACIA, cVACIA, cVACIA },
+        -:   27:        { cVACIA, cVACIA, cVACIA, cVACIA, cVACIA },
+        -:   28:        { cMINA,  cVACIA, cMINA,  cVACIA, cVACIA },
+        -:   29:};
+        -:   30:jugadas jugadasValidas_cambiarBanderita = {
+        -:   31:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:   32:        jugada(pos(1, 0), 2),jugada(pos(1, 1), 2),jugada(pos(1, 2), 3),jugada(pos(1, 4), 1),
+        -:   33:        jugada(pos(2, 0), 1),jugada(pos(2, 2), 2),jugada(pos(2, 3), 1),
+        -:   34:        jugada(pos(3, 0), 2),jugada(pos(3, 1), 3),jugada(pos(3, 2), 2),jugada(pos(3, 3), 1),jugada(pos(3, 4), 0),
+        -:   35:        jugada(pos(4, 1), 2),jugada(pos(4, 3), 1),jugada(pos(4, 4), 0),
+        -:   36:};
+        -:   37:banderitas b_ponerBanderita_antes={
+        -:   38:        pos(0,0),pos(3,3),pos(4,4),pos(1,2),pos(3,2)
+        -:   39:};
+        -:   40:
+        -:   41:banderitas b_ponerBanderita_despues={
+        -:   42:        pos(0,0),pos(3,3),pos(4,4),pos(1,2),pos(3,2),pos(2,4)
+        -:   43:};
+        -:   44:banderitas b_sacarBanderita_antes={
+        -:   45:        pos(0,0),pos(3,3),pos(4,4),pos(0,2),pos(1,2),pos(3,2)
+        -:   46:};
+        -:   47:banderitas b_sacarBanderita_despues={
+        -:   48:        pos(0,0),pos(3,3),pos(4,4),pos(1,2),pos(3,2)
+        -:   49:};
+        -:   50:
+        -:   51:
+        2:   52:TEST(cambiarBanderitaTEST, sacarBanderita){
+        1:   53:    jugadas j = jugadasValidas_cambiarBanderita;
+        1:   54:    pos p8 = pos(0,2);
+        1:   55:    banderitas b0 = b_sacarBanderita_antes;
+        1:   56:    cambiarBanderita(t_cambiar_Banderita,j,p8,b_sacarBanderita_antes);
+       1*:   57:    ASSERT_TRUE(esPermutacion(b_sacarBanderita_antes,b_sacarBanderita_despues));
+       1*:   58:    ASSERT_TRUE(sacaBanderita(p8,b_sacarBanderita_despues,b0));
+        1:   59:}
+------------------
+_ZN40cambiarBanderitaTEST_sacarBanderita_Test8TestBodyEv:
+function _ZN40cambiarBanderitaTEST_sacarBanderita_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:   52:TEST(cambiarBanderitaTEST, sacarBanderita){
+        1:   53:    jugadas j = jugadasValidas_cambiarBanderita;
+        1:   53-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   54:    pos p8 = pos(0,2);
+        1:   55:    banderitas b0 = b_sacarBanderita_antes;
+        1:   55-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   56:    cambiarBanderita(t_cambiar_Banderita,j,p8,b_sacarBanderita_antes);
+        1:   56-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   57:    ASSERT_TRUE(esPermutacion(b_sacarBanderita_antes,b_sacarBanderita_despues));
+        1:   57-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   57-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   57-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   57-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   57-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   57-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   57-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   57-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   57-block  8
+        1:   57-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   57-block 10
+    $$$$$:   57-block 11
+call   28 never executed
+    $$$$$:   57-block 12
+    $$$$$:   57-block 13
+call   29 never executed
+    $$$$$:   57-block 14
+    $$$$$:   57-block 15
+call   30 never executed
+    $$$$$:   57-block 16
+    $$$$$:   57-block 17
+call   31 never executed
+       1*:   58:    ASSERT_TRUE(sacaBanderita(p8,b_sacarBanderita_despues,b0));
+        1:   58-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   58-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   58-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   58-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   58-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   58-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   58-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   58-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   58-block  8
+        1:   58-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   58-block 10
+    $$$$$:   58-block 11
+call   28 never executed
+    $$$$$:   58-block 12
+    $$$$$:   58-block 13
+call   29 never executed
+    $$$$$:   58-block 14
+    $$$$$:   58-block 15
+call   30 never executed
+    $$$$$:   58-block 16
+    $$$$$:   58-block 17
+call   31 never executed
+        1:   59:}
+        1:   59-block  0
+        1:   59-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:   59-block  2
+        1:   59-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:   59-block  4
+call    6 never executed
+    $$$$$:   59-block  5
+call    7 never executed
+------------------
+_ZN40cambiarBanderitaTEST_sacarBanderita_TestC1Ev:
+function _ZN40cambiarBanderitaTEST_sacarBanderita_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   52:TEST(cambiarBanderitaTEST, sacarBanderita){
+        1:   52-block  0
+call    0 returned 1
+------------------
+        -:   60:
+        2:   61:TEST(cambiarBanderitaTEST, ponerBanderita){
+        1:   62:    jugadas j1=jugadasValidas_cambiarBanderita;
+        1:   63:    pos p9= pos(2,4);
+        1:   64:    banderitas b0 = b_ponerBanderita_antes;
+        1:   65:    cambiarBanderita(t_cambiar_Banderita,j1,p9,b_ponerBanderita_antes);
+       1*:   66:    ASSERT_EQ(b_ponerBanderita_antes,b_ponerBanderita_despues);
+       1*:   67:    ASSERT_TRUE(plantaBanderita(p9,b_ponerBanderita_antes,b0));
+        1:   68:}
+------------------
+_ZN40cambiarBanderitaTEST_ponerBanderita_Test8TestBodyEv:
+function _ZN40cambiarBanderitaTEST_ponerBanderita_Test8TestBodyEv called 1 returned 100% blocks executed 37%
+        1:   61:TEST(cambiarBanderitaTEST, ponerBanderita){
+        1:   62:    jugadas j1=jugadasValidas_cambiarBanderita;
+        1:   62-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   63:    pos p9= pos(2,4);
+        1:   64:    banderitas b0 = b_ponerBanderita_antes;
+        1:   64-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   65:    cambiarBanderita(t_cambiar_Banderita,j1,p9,b_ponerBanderita_antes);
+        1:   65-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   66:    ASSERT_EQ(b_ponerBanderita_antes,b_ponerBanderita_despues);
+        1:   66-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   66-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   66-block  2
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+    %%%%%:   66-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   66-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   66-block  5
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+    %%%%%:   66-block  6
+call   18 never executed
+call   19 never executed
+        1:   66-block  7
+        1:   66-block  8
+call   20 returned 1
+branch 21 taken 1 (fallthrough)
+branch 22 taken 0
+    $$$$$:   66-block  9
+call   23 never executed
+    $$$$$:   66-block 10
+    $$$$$:   66-block 11
+call   24 never executed
+    $$$$$:   66-block 12
+    $$$$$:   66-block 13
+call   25 never executed
+       1*:   67:    ASSERT_TRUE(plantaBanderita(p9,b_ponerBanderita_antes,b0));
+        1:   67-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   67-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   67-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   67-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   67-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   67-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   67-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   67-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   67-block  8
+        1:   67-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   67-block 10
+    $$$$$:   67-block 11
+call   28 never executed
+    $$$$$:   67-block 12
+    $$$$$:   67-block 13
+call   29 never executed
+    $$$$$:   67-block 14
+    $$$$$:   67-block 15
+call   30 never executed
+    $$$$$:   67-block 16
+    $$$$$:   67-block 17
+call   31 never executed
+        1:   68:}
+        1:   68-block  0
+        1:   68-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:   68-block  2
+        1:   68-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:   68-block  4
+call    6 never executed
+    $$$$$:   68-block  5
+call    7 never executed
+------------------
+_ZN40cambiarBanderitaTEST_ponerBanderita_TestC1Ev:
+function _ZN40cambiarBanderitaTEST_ponerBanderita_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   61:TEST(cambiarBanderitaTEST, ponerBanderita){
+        1:   61-block  0
+call    0 returned 1
+------------------
+        -:   69:
+        -:   70:
+        -:   71:banderitas b_ponerBanderita_antes2={
+        -:   72:        pos(0,0),pos(3,3),pos(4,4),pos(1,2),pos(3,2)
+        -:   73:};
+        -:   74:
+        -:   75:banderitas b_ponerBanderita_despues2={
+        -:   76:        pos(0,0),pos(3,3),pos(4,4),pos(1,2),pos(3,2),pos(2,4)
+        -:   77:};
+        -:   78:
+        2:   79:TEST(cambiarBanderitaTEST, ponerYSacarBanderita){
+        1:   80:    jugadas j1=jugadasValidas_cambiarBanderita;
+        1:   81:    pos p9= pos(2,4);
+        1:   82:    banderitas b0 = b_ponerBanderita_antes2;
+        1:   83:    cambiarBanderita(t_cambiar_Banderita,j1,p9,b_ponerBanderita_antes2); // Poner banderita
+       1*:   84:    ASSERT_EQ(b_ponerBanderita_antes2,b_ponerBanderita_despues2);
+       1*:   85:    ASSERT_TRUE(plantaBanderita(p9,b_ponerBanderita_antes2,b0));
+        1:   86:    banderitas b1 = b_ponerBanderita_antes2;
+        1:   87:    cambiarBanderita(t_cambiar_Banderita,j1,p9,b_ponerBanderita_antes2); // Sacar banderita
+       1*:   88:    ASSERT_TRUE(esPermutacion(b_ponerBanderita_antes2,b0));
+       1*:   89:    ASSERT_TRUE(sacaBanderita(p9,b_ponerBanderita_antes2,b1));
+        1:   90:}
+------------------
+_ZN46cambiarBanderitaTEST_ponerYSacarBanderita_Test8TestBodyEv:
+function _ZN46cambiarBanderitaTEST_ponerYSacarBanderita_Test8TestBodyEv called 1 returned 100% blocks executed 33%
+        1:   79:TEST(cambiarBanderitaTEST, ponerYSacarBanderita){
+        1:   80:    jugadas j1=jugadasValidas_cambiarBanderita;
+        1:   80-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   81:    pos p9= pos(2,4);
+        1:   82:    banderitas b0 = b_ponerBanderita_antes2;
+        1:   82-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   83:    cambiarBanderita(t_cambiar_Banderita,j1,p9,b_ponerBanderita_antes2); // Poner banderita
+        1:   83-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   84:    ASSERT_EQ(b_ponerBanderita_antes2,b_ponerBanderita_despues2);
+        1:   84-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   84-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   84-block  2
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+    %%%%%:   84-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   84-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   84-block  5
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+    %%%%%:   84-block  6
+call   18 never executed
+call   19 never executed
+        1:   84-block  7
+        1:   84-block  8
+call   20 returned 1
+branch 21 taken 1 (fallthrough)
+branch 22 taken 0
+    $$$$$:   84-block  9
+call   23 never executed
+    $$$$$:   84-block 10
+    $$$$$:   84-block 11
+call   24 never executed
+    $$$$$:   84-block 12
+    $$$$$:   84-block 13
+call   25 never executed
+       1*:   85:    ASSERT_TRUE(plantaBanderita(p9,b_ponerBanderita_antes2,b0));
+        1:   85-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   85-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   85-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   85-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   85-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   85-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   85-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   85-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   85-block  8
+        1:   85-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   85-block 10
+    $$$$$:   85-block 11
+call   28 never executed
+    $$$$$:   85-block 12
+    $$$$$:   85-block 13
+call   29 never executed
+    $$$$$:   85-block 14
+    $$$$$:   85-block 15
+call   30 never executed
+    $$$$$:   85-block 16
+    $$$$$:   85-block 17
+call   31 never executed
+        1:   86:    banderitas b1 = b_ponerBanderita_antes2;
+        1:   86-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   86-block  1
+call    3 never executed
+        1:   87:    cambiarBanderita(t_cambiar_Banderita,j1,p9,b_ponerBanderita_antes2); // Sacar banderita
+        1:   87-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   88:    ASSERT_TRUE(esPermutacion(b_ponerBanderita_antes2,b0));
+        1:   88-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   88-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   88-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   88-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   88-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   88-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   88-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   88-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   88-block  8
+        1:   88-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   88-block 10
+    $$$$$:   88-block 11
+call   28 never executed
+    $$$$$:   88-block 12
+    $$$$$:   88-block 13
+call   29 never executed
+    $$$$$:   88-block 14
+    $$$$$:   88-block 15
+call   30 never executed
+    $$$$$:   88-block 16
+    $$$$$:   88-block 17
+call   31 never executed
+       1*:   89:    ASSERT_TRUE(sacaBanderita(p9,b_ponerBanderita_antes2,b1));
+        1:   89-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   89-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   89-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   89-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   89-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   89-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   89-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   89-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   89-block  8
+        1:   89-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   89-block 10
+    $$$$$:   89-block 11
+call   28 never executed
+    $$$$$:   89-block 12
+    $$$$$:   89-block 13
+call   29 never executed
+    $$$$$:   89-block 14
+    $$$$$:   89-block 15
+call   30 never executed
+    $$$$$:   89-block 16
+    $$$$$:   89-block 17
+call   31 never executed
+        1:   90:}
+        1:   90-block  0
+        1:   90-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:   90-block  2
+        1:   90-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:   90-block  4
+call    6 never executed
+    $$$$$:   90-block  5
+call    7 never executed
+------------------
+_ZN46cambiarBanderitaTEST_ponerYSacarBanderita_TestC1Ev:
+function _ZN46cambiarBanderitaTEST_ponerYSacarBanderita_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   79:TEST(cambiarBanderitaTEST, ponerYSacarBanderita){
+        1:   79-block  0
+call    0 returned 1
+------------------
+        -:   91:
+        -:   92:
+        -:   93:banderitas b_ponerBanderita_antes3={
+        -:   94:        pos(0,0),pos(3,3),pos(4,4),pos(1,2),pos(3,2)
+        -:   95:};
+        -:   96:
+        2:   97:TEST(cambiarBanderitaTEST, ponerBanderitaEnPosicionJugada){
+        1:   98:    jugadas j1=jugadasValidas_cambiarBanderita;
+        1:   99:    pos p9= pos(2, 2);
+        1:  100:    banderitas b0 = b_ponerBanderita_antes3;
+        1:  101:    cambiarBanderita(t_cambiar_Banderita,j1,p9,b_ponerBanderita_antes3); // Poner banderita
+       1*:  102:    ASSERT_FALSE(plantaBanderita(p9,b_ponerBanderita_antes3,b0));
+        1:  103:}
+------------------
+_ZN56cambiarBanderitaTEST_ponerBanderitaEnPosicionJugada_Test8TestBodyEv:
+function _ZN56cambiarBanderitaTEST_ponerBanderitaEnPosicionJugada_Test8TestBodyEv called 1 returned 100% blocks executed 41%
+        1:   97:TEST(cambiarBanderitaTEST, ponerBanderitaEnPosicionJugada){
+        1:   98:    jugadas j1=jugadasValidas_cambiarBanderita;
+        1:   98-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   99:    pos p9= pos(2, 2);
+        1:  100:    banderitas b0 = b_ponerBanderita_antes3;
+        1:  100-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  101:    cambiarBanderita(t_cambiar_Banderita,j1,p9,b_ponerBanderita_antes3); // Poner banderita
+        1:  101-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  102:    ASSERT_FALSE(plantaBanderita(p9,b_ponerBanderita_antes3,b0));
+        1:  102-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  102-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  102-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  102-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:  102-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:  102-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  102-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:  102-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:  102-block  8
+        1:  102-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:  102-block 10
+    $$$$$:  102-block 11
+call   28 never executed
+    $$$$$:  102-block 12
+    $$$$$:  102-block 13
+call   29 never executed
+    $$$$$:  102-block 14
+    $$$$$:  102-block 15
+call   30 never executed
+    $$$$$:  102-block 16
+    $$$$$:  102-block 17
+call   31 never executed
+        1:  103:}
+        1:  103-block  0
+        1:  103-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:  103-block  2
+        1:  103-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:  103-block  4
+call    6 never executed
+    $$$$$:  103-block  5
+call    7 never executed
+------------------
+_ZN56cambiarBanderitaTEST_ponerBanderitaEnPosicionJugada_TestC1Ev:
+function _ZN56cambiarBanderitaTEST_ponerBanderitaEnPosicionJugada_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   97:TEST(cambiarBanderitaTEST, ponerBanderitaEnPosicionJugada){
+        1:   97-block  0
+call    0 returned 1
+------------------

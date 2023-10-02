@@ -1,0 +1,138 @@
+\documentclass{article}
+\input{Algo1Macros.tex}
+
+\usepackage{caratula}
+
+\begin{document}
+%Caratula
+\titulo{Trabajo Práctico Especificación}
+\subtitulo{Buscaminas}
+\fecha{23 de septiembre de 2022}
+\materia{Algoritmos y Estructuras de Datos I}
+\integrante{Santiago García}{627/21}{atsantiagogarcia@gmail.com}
+\integrante{Felipe Saidon}{1436/21}{felipesaidon@gmail.com}
+\integrante{Tewrence Da Cruz}{619/21}{tewrence.cruz@gmail.com}
+\integrante{Matías Daniel Díaz Sarmiento}{704/19}{mdds.2017@gmail.com}
+\maketitle
+
+%Creacion de indice
+\tableofcontents
+\newpage
+
+\section{Definiciones de tipos}
+Para nuestra especificación utilizaremos los siguientes renombres de tipos: \\
+type \textit{pos}= \ent \times \ent 
+
+Identificador de una posición en el tablero (fila, columna). Ambos indices comienzan en cero. La fila avanza de arriba
+hacia abajo y la columna de izquierda a derecha (ver figura 2) \\
+type \textit{tablero}= seq⟨seq⟨Bool⟩⟩ 
+
+Matriz con valores booleanos indicando las posiciones de las minas. Cada posici´on contiene el valor \textbf{true} si hay una
+mina y el valor \textbf{false} si no la hay. Cada elemento de la secuencia representa una fila, o sea que si t es de tipo tablero,
+t[0] es la primera fila, t[1] la segunda, etc. Las filas se cuentan de arriba hacia abajo. A su vez los elementos de cada
+fila se cuentan de izquierda a derecha, por lo que en t[0][0] se encuentra la posición (0, 0) y, en general, en t[i][j] se
+encuentra la posición (i, j) (ver figura 2).\\
+type  \textit{jugadas}= seq⟨pos \times \ent⟩
+
+Secuencia de casillas jugadas. Incluye solo las posiciones de las casillas descubiertas e indica, para una determinada
+posición, el número de minas adyacentes. \\
+type  \textit{banderitas} = seq⟨pos⟩
+
+Secuencia con las posiciones en las que el jugador puso una bandera porque considera que hay una mina (ayudamemoria). El orden de los elementos de la secuencia no es importante.
+
+\subsection{Ejercicio 1}
+
+\aux{minasAdyacentes}{t: tablero, p: pos}{\ent}{\sum\limits_{i=pos_0 - 1}^{pos0+1}(\sum\limits{i=pos_1 - 1}^{pos_1+1}(\textit{If hayMinaAdyacente(i,j,t) then 1 else 0 fi}))}
+
+\pred{hayMinaAdyacente}{i,j: \ent, t: tablero, p: pos}{(i\neq p_0 \y i \geq 0)\y (j \neq p_1 \y j \geq 0) \yLuego t[i][j]=true}
+
+\subsection{Ejercicio 2}
+
+\pred{juegoValido}{t: tablero, p: pos}{|j|\leq|t| \y (\forall i: \ent)(0\leq i < |j| \rightarrow_L (0 \leq j[i]_00, j[i]_01 < |t|) \yLuego t[j[i]_00][j[i]_01] = false \yLuego j[i]_1 = minasAdyacentes(t, j[i]_0) \y #apariciones(j[i],j)=1)) \y tableroValido(t)}
+
+\pred{tableroValido}{t:tablero}{(\forall i: \ent)(0 \leq |t| \rightarrow_L |t[i]|=|t|)}
+
+\subsection{Ejercicio 3}
+
+\begin{proc}{plantarBanderita}{\In t: tablero, \In j: jugadas, \In p: pos \Inout b: banderitas}{}
+	\pre{b = B_0 \y juegoValido(t,j) \y noHayBanderitasDescubiertasNiRepetidas(B_0, j) \y sePuedePonerBanderitaEnPosicion(p, B_0, j, t)}
+	\post{|b| = |${B_0}$| \y noHayBanderitasDescubiertasNiRepetidas(b,j)}
+\end{proc}
+
+\pred{posicionValidaParaJugar}{p:pos,t:tablero, j:jugada}{posicionValida(p,t) \y posicionNoJugada(p, j)}
+
+\pred{posicionValida}{p:pos, t:tablero}{0\leq p_0, p_1 < |t|}
+
+\begin{pred}{posicionNoJugada}{p:pos, j:jugada}{\not (\exists i : \ent)(0 \leq i < |j| /yLuego j[i]_0 = p)}
+\pred{sePuedePonerBanderitaEnPosicion}{p: pos, B_0: banderitas, j:jugadas, t:tablero}{posicionNoMarcada(p, B_0) \yLuego posicionValidaParaJugar(p,t,j)}
+\end{pred}
+\begin{pred}{noHayBanderitasDescubiertasNiRepetidas}{B_0: banderitas, j: jugadas}{(\forall i: \ent)(0 \leq i < |B_0| \rightarrow_L posicionNoJugada(B_0[i], j) \y sinRepetidos(B_0))}\end{pred}
+
+\subsection{Ejercicio 4}
+\begin{proc}{perdio}{\In t:tablero, \In j:jugadas, \Out res:\bool}{}
+    \pre{juegoValido(t,j)}
+    \post{res=true \Leftrightarrow tocoUnaMina(j,t)}
+\end{proc}\
+
+\pred{tocoUnaMina}{j:jugadas,t:tablero}
+{(\exists i:\ent)(0\leq i < |j| \yLuego t[j[i]_0_0][j[i]_0_1]=\True)}
+
+\subsection{Ejercicio 5}
+\begin{proc}{gano}{\In t:tablero, \In j:jugadas, \Out res:\bool}{}
+\pre{juegoValido(t,j)}
+\post{res=true \Leftrightarrow esquivoTodasLasMinas(j,t)}
+\end{proc}\
+
+\pred{esquivoTodasLasMinas}{j:jugadas,t:tablero}
+{\neg(\exists i:\ent) \wedge \neg(\exists k:\ent)((0\leq i < |t| \wedge 0\leq k < |t| \wedge t[i][k]=\False)\yLuego posicionJugada((i,k),j)) \wedge ((\forall i:\ent)\wedge (\forall k:\ent)(0\leq i < |t| \wedge 0\leq k < |t|\wedge t[i][k]=\True)\implicaLuego posicionJugada((i,k),j))}
+
+\pred{posicionJugada}{p:pos,j:jugadas}
+{\neg posicionNoJugada(p,j)}
+
+\subsection{Ejercicio 6}
+\begin{proc}{jugar}{in t: tablero, in b: banderitas, in p: pos, inout j: jugadas}{}
+    \pre{j = J_0 \y juegoValido(j, J_0) \y \neg tocoUnaMina(J_0, t) \y posicionValidaParaJugar(p,t,J_0) \y posicionNoMarcada(p, b) \y noHayBanderitasDescubiertasNiRepetidas(b, J_0)}
+    \post{|j|=|J_0 + 1| \y posicionJugada(p, j) \y juegoValido(t,j) \y posicionNoMarcada(p, b) \y noHayBanderitasDescubiertasNiRepetidas(b,j)}
+\end{proc}
+
+
+\subsection{Ejercicio 7}
+
+\begin{pred}{caminoLibre}{t: tablero, p_0: pos, p_1: pos}{minasAdyacentes(t, p_1) \geq 1 \y minasAdyacentes(t, p_0) = 0 \y ($\exists$ i, j: $\ent$)(((${p_0}_0$ < i < {p_1}_0 $\lor$ {p_1}_0 < i < {p_1}_0) $\y$ ({p_0}_1 < j < {p_1}_1 $\lor$ {p_1}_1 < j < {p_0}_1) \y minasAdyacentes(t, (i,j)) = 0)}
+\end{pred}
+
+\subsection{Ejercicio 8}
+\begin{proc}{JugarPlus}{\In t: tablero, \In b: banderitas, \In p: pos, \Inout j: jugadas}{}
+    \pre{j=J_0 \y juegoValido(t, J_0) \y \neg tocoUnaMina(J_0, t) \y noHayBanderitasDescubiertasNiRepetidas(b,j) \y posicionValidaParaJugar(p, t, J_0) \y posicionNoMarcada(p, b) }
+    \post{|j|>|J_0| \y posicionJugada(p, j) \y posicionNoMarcada(p, b) \y noHayBanderitasDescubiertasNiRepetidas(b,j) \y seDescubrenCasillerosSinMinasAdyacentes(t,p,j) \y juegoValido(t,j)}
+\end{proc}
+
+
+\begin{pred}{seDescubrenCasillerosSinMinasAdyacentes}{t:tablero, p: pos, j: jugadas}{(\exists p-1: pos)(caminoLibre(t,p,p-1) \yLuego (\forall i, k: \ent) (((p_0 < i < {p-1}_0 \lor {p-1}_0 < i < p_0) \y (p_1 < j < {p-1}_1 \lor {p-1}_1 < j < p_1)\y minasAdyacentes(t, (i,k))= 0 \rightarrow_L posicionJugada((i,k), j))))}\end{pred}
+
+\subsection{Ejercicio 9}
+\begin{proc}{sugerirAutomatico121}{\In t: tablero, \In b: banderitas, \In j: jugadas, \Out p: pos}{}
+    \pre{juegoValido(t,j) \y \neg tocoUnaMina(j,t) \y noHayBanderitasDescubiertasNiRepetidas(b,j) \y hay121(t,j) }
+    \post{t[${p_0}$][${p_1}$] = false \y posicionValidaParaJugar(p,t,j) \y posicionNoMarcada(p,b) \y ((hay121Vertical((${p_0}$,${p_1} - 1$),t,j) \vee hay121Vertical((${p_0}$,${p_1} + 1$),t,j)) \vee (hay121horizontal(${p_0} - 1$,${p_1}$),t,j) \vee hay121horizontal(${p_0} + 1$,${p_1}$),t,j))}
+\end{proc}
+
+\begin{pred}{hay121}{t:tablero, j: jugadas}{(\exists i,k: \ent)((posicionValida((i,k),t) \yLuego posicionJugada((i,k),j) \y minasAdyacentes(t,(i,k)) = 2) \yLuego (hay121Vertical((i,k),t,j) \oLuego hay121Horizontal((i,k),t,j))}\end{pred}
+
+\begin{pred}{hay121Vertical}{(i,k):pos, t:tablero, j: jugadas}{
+((posicionJugada((i-1,k),j) \y minasAdyacentes(t,(i-1,k)) = 1) \y (posicionJugada((i+1,k),t) \y minasAdyacentes(t,(i+1,k)) = 1)) \yLuego
+((((posicionJugada((i-1,k-1),j) \y posicionJugada((i,k-1),j) \y posicionJugada((i+1,k-1),j)) \yLuego (posicionValida((i-1,k+1),t) \y posicionValida((i+1,k+1),t) \y t[i-1][k+1]=t[i+1][k+1]=true \y posicionValida((i,k+1),t) \y t[i][k+1]=false)) \oLuego 
+(\neg (posicionValida((i-1,k-1),t) \y posicionValida((i,k-1),t) \y posicionValida((i+1,k-1),t)) \yLuego (posicionValida((i-1,k+1),t) \y posicionValida((i+1,k+1),t) \y t[i-1][k+1]=t[i+1][k+1]=true \y posicionValida((i,k+1),t) \y t[i][k+1]=false)))
+
+\oLuego
+
+(((posicionJugada((i-1,k+1),j) \y posicionJugada((i,k+1),j) \y posicionJugada((i+1,k+1),j)) \yLuego (posicionValida((i-1,k-1),t) \y posicionValida((i+1,k-1),t) \y t[i-1][k-1]=t[i+1][k-1]=true \y posicionValida((i,k-1),t) \y t[i][k-1]=false)) \oLuego 
+(\neg (posicionValida((i-1,k+1),t) \y posicionValida((i,k+1),t) \y posicionValida((i+1,k+1),t)) \yLuego (posicionValida((i-1,k-1),t) \y posicionValida((i+1,k-1),t) \y t[i-1][k-1]=t[i+1][k-1]=true \y posicionValida((i,k-1),t) \y t[i][k-1]=false)))
+}\end{pred}
+
+\begin{pred}{hay121Horizontal}{(i,k): pos, t:tablero, j: jugada}{
+((posicionJugada((i, k+1), j) \y minasAdyacentes(t, (i, k+1)) = 1) \y (posicionJugada((i,k-1), j) \y minasAdyacentes(t, (i, k-1)) = 1) \yLuego \\((((posicionJugada((i-1, k-1),j) \y posicionJugada((i+1, k), j) \y posicionJugada((i+1, k+1), j)) \yLuego \\ (posicionValida(i-1, k-1),t) \y posicionValida((i-1, k+1),t) \y t[i-1][k-1]=t[i-1][k+1]=true \y posicionValida((i-1, k), t) \y t[i-1][k] = false)) \lor_L ( \neg (posicionValida((i+1, k-1), t) \y posicionValida((i+1, k), t) \y posicionJugada((i+1, k+1), j)) \yLuego \\ (posicionValida((i-1, k), t) \y t[i-1][k]=false)) \lor_L (((posicionJugada((i-1, k-1), j) \y posicionJugada((i-1, k), j) \y posicionJugada((i-1, k+1),j)) \yLuego \\
+(posicionValida((i+1, k), t) \y t[i+1][k]=false)) \lor_L (\neg (posicionValida((i-1, k-1), t) \y posicionValida((i-1,k),t) \y posicionValida((i-1, k+1), t)) \yLuego \\ (posicionValida((i+1, k-1), t) \y posicionValida((i+1, k+1), t) \y posicionValida((i+1, k+1), t) \y t[i+1][k-1]=t[i+1][k+1]=true \y posicionValida((i+1, k),t) \y t[i+1][k]=false))))
+}
+\end{pred}
+
+\end{document}

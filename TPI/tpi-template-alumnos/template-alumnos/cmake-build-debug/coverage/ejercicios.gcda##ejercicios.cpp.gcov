@@ -1,0 +1,360 @@
+        -:    0:Source:C:/Users/mdds2/OneDrive/Escritorio/UBA/Algo I/TPI/tpi-template-alumnos/template-alumnos/ejercicios.cpp
+        -:    0:Graph:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\ejercicios.gcno
+        -:    0:Data:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\ejercicios.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Este archivo contiene las definiciones de las funciones que implementan los ejercicios
+        -:    3://
+        -:    4:
+        -:    5:#include <stdio.h>
+        -:    6:#include <iostream>
+        -:    7:#include <utility>
+        -:    8:
+        -:    9:#include "definiciones.h"
+        -:   10:#include "ejercicios.h"
+        -:   11:#include "auxiliares.h"
+        -:   12:
+        -:   13:using namespace std;
+        -:   14:
+        -:   15:/******++++**************************** EJERCICIO minasAdyacentes ***********+++***********************/
+        -:   16:
+function _Z15minasAdyacentesRSt6vectorIS_IbSaIbEESaIS1_EESt4pairIiiE called 289 returned 100% blocks executed 100%
+      289:   17:int minasAdyacentes(tablero& t, pos p) {
+        -:   18:    // Complejidad de peor caso constante, del orden de O(3*3) = O(9), es decir, O(1).
+      289:   19:    int suma=0;
+     1156:   20:    for(int i=-1;i<=1;i++){ // Itera 3 veces por posicion dada (O(3))
+      289:   20-block  0
+     1156:   20-block  1
+branch  0 taken 867
+branch  1 taken 289 (fallthrough)
+      867:   21:        int subsuma = 0;
+     3468:   22:        for(int j=-1;j<=1;j++){ // Itera 3 veces por posicion dada (O(3))
+      867:   22-block  0
+     2601:   22-block  1
+     3468:   22-block  2
+branch  0 taken 2601
+branch  1 taken 867 (fallthrough)
+     2601:   23:            if(esAdyacenteValida(p,i,j,t) && t[p.first + i][p.second + j]){
+     2601:   23-block  0
+call    0 returned 2601
+branch  1 taken 2601 (fallthrough)
+branch  2 taken 0 (throw)
+     2601:   23-block  1
+branch  3 taken 1662 (fallthrough)
+branch  4 taken 939
+     1662:   23-block  2
+call    5 returned 1662
+call    6 returned 1662
+branch  7 taken 1662 (fallthrough)
+branch  8 taken 0 (throw)
+     1662:   23-block  3
+call    9 returned 1662
+branch 10 taken 176 (fallthrough)
+branch 11 taken 1486
+      176:   23-block  4
+     2425:   23-block  5
+     2601:   23-block  6
+branch 12 taken 176 (fallthrough)
+branch 13 taken 2425
+      176:   24:                subsuma = subsuma + 1;
+      176:   24-block  0
+        -:   25:            }
+        -:   26:        }
+      867:   27:        suma = suma + subsuma;
+      867:   27-block  0
+        -:   28:    }
+      289:   29:    return suma;
+      289:   29-block  0
+      289:   29-block  1
+        -:   30:}
+        -:   31:
+        -:   32:/******++++**************************** EJERCICIO plantarBanderita ***********+++***********************/
+        -:   33:
+function _Z16cambiarBanderitaRSt6vectorIS_IbSaIbEESaIS1_EERS_ISt4pairIS5_IiiEiESaIS7_EES6_RS_IS6_SaIS6_EE called 5 returned 100% blocks executed 100%
+        5:   34:void cambiarBanderita(tablero& t, jugadas& j, pos p, banderitas& b) {
+        -:   35:    // Complejidad de peor caso es del orden O(g) + O(g+m), es decir O(2g+m) con g = b.size() y m = j.size().
+        -:   36:    // El siguiente ciclo tiene complejidad temporal de peor caso del orden O(g) con
+        -:   37:    // g = b.size() puesto que recorre toda la secuencia b para encontrar si p es banderita y si lo es sacarla.
+        5:   38:    bool found = false;
+       31:   39:    for(int i=0;i<b.size();i++){ // Sacar la banderita.
+        5:   39-block  0
+       26:   39-block  1
+       31:   39-block  2
+call    0 returned 31
+branch  1 taken 26
+branch  2 taken 5 (fallthrough)
+       26:   40:        if(b[i] == p){ // Los accesos a la secuencia y demás operaciones elementales se consideran de orden O(1).
+       26:   40-block  0
+call    0 returned 26
+call    1 returned 26
+branch  2 taken 2 (fallthrough)
+branch  3 taken 24
+        2:   41:            found = true;
+        2:   42:            pos c = b[b.size()-1];
+        2:   42-block  0
+call    0 returned 2
+call    1 returned 2
+        2:   43:            b[b.size()-1] = b[i];
+call    0 returned 2
+call    1 returned 2
+call    2 returned 2
+call    3 returned 2
+        2:   44:            b[i]=c;
+call    0 returned 2
+call    1 returned 2
+        2:   45:            b.pop_back();
+call    0 returned 2
+        -:   46:        }
+        -:   47:    }
+        -:   48:    // Hacer la comparación que exige la guarda siguiente tiene complejidad de peor caso del orden O(g+m)
+        -:   49:    // con g = b.size() y m = j.size() (más justificación en auxiliares.cpp)
+        5:   50:    if(esPosicionSinJugarYSinBanderita(p,j,b,t) && !found){ // Poner la banderita.
+        5:   50-block  0
+call    0 returned 5
+branch  1 taken 3 (fallthrough)
+branch  2 taken 2
+        3:   50-block  1
+branch  3 taken 2 (fallthrough)
+branch  4 taken 1
+        2:   50-block  2
+        3:   50-block  3
+        5:   50-block  4
+branch  5 taken 2 (fallthrough)
+branch  6 taken 3
+        2:   51:        b.push_back(p); // O(1)
+        2:   51-block  0
+call    0 returned 2
+        -:   52:    }
+        5:   53:}
+        -:   54:
+        -:   55:/******++++**************************** EJERCICIO perdio ***********+++***********************/
+function _Z6perdioRSt6vectorIS_IbSaIbEESaIS1_EERS_ISt4pairIS5_IiiEiESaIS7_EE called 4 returned 100% blocks executed 100%
+        4:   56:bool perdio(tablero& t, jugadas& j) {
+        -:   57:    // Complejidad de peor caso es O(m) con m = j.size()
+        4:   58:    bool res = juegoPerdido(t,j); // Itera en el peor caso m veces, con m = j.size()
+        4:   58-block  0
+call    0 returned 4
+        -:   59:    // buscando si hay alguna posición en la que haya una mina (más justificación en auxiliares.cpp)
+        4:   60:    return res;
+        -:   61:}
+        -:   62:
+        -:   63:/******++++**************************** EJERCICIO gano ***********+++***********************/
+function _Z4ganoRSt6vectorIS_IbSaIbEESaIS1_EERS_ISt4pairIS5_IiiEiESaIS7_EE called 3 returned 100% blocks executed 100%
+        3:   64:bool gano(tablero& t, jugadas& j){
+        -:   65:    // (Más justificaciones en auxiliares.cpp, en la función juegoGanado)
+        -:   66:    // El algoritmo tiene complejidad de peor caso O(n^2), puesto que itera n veces en la secuencia por cada
+        -:   67:    // iteración del segundo loop, el cual está dentro de otro loop que itera también n veces en el peor caso.
+        3:   68:    bool res = juegoGanado(t,j);
+        3:   68-block  0
+call    0 returned 3
+        3:   69:    return res;
+        -:   70:}
+        -:   71:
+        -:   72:/******++++**************************** EJERCICIO jugarPlus ***********+++***********************/
+function _Z9jugarPlusRSt6vectorIS_IbSaIbEESaIS1_EERS_ISt4pairIiiESaIS6_EES6_RS_IS5_IS6_iESaISA_EE called 36 returned 100% blocks executed 84%
+       36:   73:void jugarPlus(tablero& t, banderitas& b, pos p, jugadas& j) {
+        -:   74:    // Complejidad de peor caso: O(h^n)
+       36:   75:    jugada c = jugada(p, minasAdyacentes(t, p));
+       36:   75-block  0
+call    0 returned 36
+branch  1 taken 36 (fallthrough)
+branch  2 taken 0 (throw)
+       36:   75-block  1
+call    3 returned 36
+       36:   76:    j.push_back(c);
+call    0 returned 36
+branch  1 taken 36 (fallthrough)
+branch  2 taken 0 (throw)
+      144:   77:    for (int i = p.first - 1; i <= p.first + 1; i++) { // Itera 3 veces por posicion dada (orden O(1) )
+       36:   77-block  0
+      108:   77-block  1
+      144:   77-block  2
+branch  0 taken 108
+branch  1 taken 36 (fallthrough)
+      432:   78:        for (int k = p.second - 1; k <= p.second + 1; k++) { // Itera 3 veces por posicion dada (orden O(1) )
+      108:   78-block  0
+      324:   78-block  1
+      432:   78-block  2
+branch  0 taken 324
+branch  1 taken 108 (fallthrough)
+      324:   79:            pos q = pos(i, k);  // O(1)
+      324:   79-block  0
+call    0 returned 324
+        -:   80:            // Complejidad de peor caso de esPosicionSinJugarYSinBanderita es O(g+m) con g = b.size() y m = j.size()
+        -:   81:            // Complejidad de peor caso de minasAdyacentes es O(1)
+        -:   82:            // renombro g + m = h, es decir O(g+m) = O(h)
+      363:   83:            if (esPosicionSinJugarYSinBanderita(q, j, b, t) && (!t[q.first][q.second]) &&
+call    0 returned 324
+branch  1 taken 324 (fallthrough)
+branch  2 taken 0 (throw)
+      324:   83-block  0
+branch  3 taken 39 (fallthrough)
+branch  4 taken 285
+       39:   83-block  1
+call    5 returned 39
+call    6 returned 39
+branch  7 taken 39 (fallthrough)
+branch  8 taken 0 (throw)
+       39:   83-block  2
+call    9 returned 39
+branch 10 taken 39 (fallthrough)
+branch 11 taken 0
+       31:   83-block  3
+      293:   83-block  4
+      324:   83-block  5
+branch 12 taken 31 (fallthrough)
+branch 13 taken 293
+    $$$$$:   83-block  6
+       39:   84:                (minasAdyacentes(t, q) == 0)) {
+       39:   84-block  0
+call    0 returned 39
+branch  1 taken 39 (fallthrough)
+branch  2 taken 0 (throw)
+       39:   84-block  1
+branch  3 taken 31 (fallthrough)
+branch  4 taken 8
+        -:   85:                // Hasta acá la complejidad de peor caso de la función es del orden O(h*h + h*jugarPlus) (ver abajo que se chequea de nuevo la guarda)
+        -:   86:                // Acá reviso las posiciones adyacentes a la posicion encontrada del camino libre, y si son la posicion final, las agrego.
+      124:   87:                for (int x = q.first - 1; x <= q.first + 1; x++) { // Itera 3 veces por posicion dada (orden O(1) )
+       31:   87-block  0
+       93:   87-block  1
+      124:   87-block  2
+branch  0 taken 93
+branch  1 taken 31 (fallthrough)
+      372:   88:                    for (int y = q.second - 1; y <= q.second + 1; y++) { // Itera 3 veces por posicion dada (orden O(1) )
+       93:   88-block  0
+      279:   88-block  1
+      372:   88-block  2
+branch  0 taken 279
+branch  1 taken 93 (fallthrough)
+      279:   89:                        pos r = pos(x, y);  // O(1)
+      279:   89-block  0
+call    0 returned 279
+      376:   90:                        if (esPosicionSinJugarYSinBanderita(r, j, b, t) && (!t[r.first][r.second]) &&
+call    0 returned 279
+branch  1 taken 279 (fallthrough)
+branch  2 taken 0 (throw)
+      279:   90-block  0
+branch  3 taken 97 (fallthrough)
+branch  4 taken 182
+       97:   90-block  1
+call    5 returned 97
+call    6 returned 97
+branch  7 taken 97 (fallthrough)
+branch  8 taken 0 (throw)
+       97:   90-block  2
+call    9 returned 97
+branch 10 taken 97 (fallthrough)
+branch 11 taken 0
+       34:   90-block  3
+      245:   90-block  4
+      279:   90-block  5
+branch 12 taken 34 (fallthrough)
+branch 13 taken 245
+    $$$$$:   90-block  6
+       97:   91:                            (minasAdyacentes(t, r) > 0)) { // Hasta acá la complejidad de peor caso de los ciclos es del orden O(h)
+       97:   91-block  0
+call    0 returned 97
+branch  1 taken 97 (fallthrough)
+branch  2 taken 0 (throw)
+       97:   91-block  1
+branch  3 taken 34 (fallthrough)
+branch  4 taken 63
+       34:   92:                            jugada z = jugada(r, minasAdyacentes(t, r));
+       34:   92-block  0
+call    0 returned 34
+branch  1 taken 34 (fallthrough)
+branch  2 taken 0 (throw)
+       34:   92-block  1
+call    3 returned 34
+       34:   93:                            j.push_back(z); // Agrego posiciones finales del camino libre (con minas adyacentes)
+call    0 returned 34
+branch  1 taken 34 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   94:                        }
+        -:   95:                    }
+        -:   96:                }
+       31:   97:                jugarPlus(t, b, q, j);
+       31:   97-block  0
+call    0 returned 31
+branch  1 taken 31 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   98:                // El peor caso de todos es descubrir el tablero entero de una sola jugada (por ejemplo, si todos tienen 0 minas adyacentes).
+        -:   99:                // Es decir, cuando ejecutamos el primer if, el cual tiene un coste de h, debemos ejecutar el segundo if (también coste h)
+        -:  100:                // seguido del llamado recursivo a jugarPlus hasta el último llamado a la función (O(h*h + h*jugarPlus)),
+        -:  101:                // el cual tendrá coste h ya que estarán todas las posiciones jugadas y no se entra al primer if, ya que,
+        -:  102:                // al ser un llamado recursivo,
+        -:  103:                // coloca al final de la secuencia de jugadas a la posición q descubierta
+        -:  104:                // que ya sabemos es una posición que forma parte del camino.
+        -:  105:                // Hace esto hasta que no entra más al if dentro del segundo for.
+        -:  106:                // Por lo tanto la complejidad nos quedará O(h*(h+h*(h+...h*h)), y este polinomio queda con h elevado n veces (con n el tamaño del tablero)
+        -:  107:                // y queda con complejidad polinómica, pero simplificadamente quedaría algo con complejidad O(h^n).
+        -:  108:            }
+        -:  109:        }
+        -:  110:    }
+       36:  111:}
+       36:  111-block  0
+        -:  112:
+        -:  113:/******++++**************************** EJERCICIO sugerirAutomatico121 ***********+++***********************/
+function _Z20sugerirAutomatico121RSt6vectorIS_IbSaIbEESaIS1_EERS_ISt4pairIiiESaIS6_EERS_IS5_IS6_iESaISA_EERS6_ called 10 returned 100% blocks executed 92%
+       10:  114:bool sugerirAutomatico121(tablero& t, banderitas& b, jugadas& j, pos& p) {
+        -:  115:    // El algoritmo tiene complejidad de peor caso del orden O(m*n^2), para ser más exactos O((g+m)*n^2)
+        -:  116:    // con m = j.size(), g = b.size() y n = t.size().
+       10:  117:    bool hay = hayPosicionSugerible(j,b,t); // hayPosicionSugerible(j,b,t) tiene complejidad de peor caso O(m*n^2)
+       10:  117-block  0
+call    0 returned 10
+       10:  118:    if(hay){
+branch  0 taken 5 (fallthrough)
+branch  1 taken 5
+       30:  119:        for(int i = 0; i < t.size(); i++){ // En el peor caso itera t.size() = n veces, y por cada iteración
+        5:  119-block  0
+       25:  119-block  1
+       30:  119-block  2
+call    0 returned 30
+branch  1 taken 25
+branch  2 taken 5 (fallthrough)
+        -:  120:            // vuelve a iterar n veces. Es decir, la complejidad en el peor caso es O((g+m)*n^2).
+      150:  121:            for(int k = 0; k < t.size(); k++){ // En total, este ciclo tiene complejidad de peor caso del orden O(n*(g+m)).
+       25:  121-block  0
+      125:  121-block  1
+      150:  121-block  2
+call    0 returned 150
+branch  1 taken 125
+branch  2 taken 25 (fallthrough)
+        -:  122:                // En el peor caso itera t.size() = n veces. A su vez, cada
+        -:  123:                // iteración de estas tiene complejidad de peor caso del orden O(g+m)+O(m) con m = j.size() y g = b.size().
+      125:  124:                pos x = make_pair(i, k);
+      125:  124-block  0
+call    0 returned 125
+      125:  125:                if(esPosicionSinJugarYSinBanderita(x, j, b, t) && esAdyacenteA121(x, j)){
+call    0 returned 125
+branch  1 taken 125 (fallthrough)
+branch  2 taken 0 (throw)
+      125:  125-block  0
+branch  3 taken 6 (fallthrough)
+branch  4 taken 119
+        6:  125-block  1
+call    5 returned 6
+branch  6 taken 6 (fallthrough)
+branch  7 taken 0 (throw)
+        6:  125-block  2
+branch  8 taken 6 (fallthrough)
+branch  9 taken 0
+        6:  125-block  3
+      119:  125-block  4
+      125:  125-block  5
+branch 10 taken 6 (fallthrough)
+branch 11 taken 119
+        -:  126:                    // La complejidad de peor caso de esta comparación es O(t+m)+O(m) con m = j.size() y g = b.size() (más justificación en auxiliares.cpp).
+        6:  127:                    p = x;
+        6:  127-block  0
+call    0 returned 6
+        -:  128:                }
+        -:  129:            }
+        -:  130:        }
+        -:  131:    }
+        -:  132:    //cout << "Posición sugerida para jugar: " << "(" <<  p.first << "," << p.second << ")";
+       10:  133:    return hay;
+       10:  133-block  0
+       10:  133-block  1
+        -:  134:}

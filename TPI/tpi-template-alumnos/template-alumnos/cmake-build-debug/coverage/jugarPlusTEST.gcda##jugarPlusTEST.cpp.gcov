@@ -1,0 +1,699 @@
+        -:    0:Source:C:/Users/mdds2/OneDrive/Escritorio/UBA/Algo I/TPI/tpi-template-alumnos/template-alumnos/tests/jugarPlusTEST.cpp
+        -:    0:Graph:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\tests\jugarPlusTEST.gcno
+        -:    0:Data:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\tests\jugarPlusTEST.gcda
+        -:    0:Runs:1
+        -:    1:// Tests para la función jugarPlus.
+        -:    2:// Ver el archovo README.md para ayuda
+        -:    3:
+        -:    4:#include "../ejercicios.h"
+        -:    5:#include "../auxiliares.h"
+        -:    6:#include "gtest/gtest.h"
+        -:    7:
+        -:    8:using namespace std;
+        -:    9:
+        -:   10:// ┌───┬───┬───┬───┬───┐
+        -:   11:// │ * │ * │ 2 │ * │ 1 │
+        -:   12:// ├───┼───┼───┼───┼───┤
+        -:   13:// │ 2 │ 2 │ 2 │ 1 │ 1 │
+        -:   14:// ├───┼───┼───┼───┼───┤
+        -:   15:// │ 0 │ 0 │ 0 │ 0 │ 0 │
+        -:   16:// ├───┼───┼───┼───┼───┤
+        -:   17:// │ 1 │ 2 │ 1 │ 1 │ 0 │
+        -:   18:// ├───┼───┼───┼───┼───┤
+        -:   19:// │ * │ 2 │ * │ 1 │ 0 │
+        -:   20:// └───┴───┴───┴───┴───┘
+        -:   21:tablero t_jugarPlus = {
+        -:   22:        { cMINA,  cMINA,  cVACIA, cMINA, cVACIA },
+        -:   23:        { cVACIA, cVACIA, cVACIA, cVACIA,  cVACIA },
+        -:   24:        { cVACIA, cVACIA,  cVACIA, cVACIA, cVACIA },
+        -:   25:        { cVACIA, cVACIA, cVACIA, cVACIA, cVACIA },
+        -:   26:        { cMINA,  cVACIA, cMINA,  cVACIA, cVACIA },
+        -:   27:};
+        -:   28:jugadas j0_1 = {
+        -:   29:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:   30:};
+        -:   31:jugadas j_1 = {
+        -:   32:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:   33:        jugada(pos(1,0),2),jugada(pos(1,1),2),jugada(pos(1,2),2),jugada(pos(1,3),1),jugada(pos(1,4),1),
+        -:   34:        jugada(pos(2, 0), 0),jugada(pos(2, 1), 0),jugada(pos(2, 2), 0),jugada(pos(2, 3), 0),jugada(pos(2,4),0),
+        -:   35:        jugada(pos(3,0),1),jugada(pos(3,1),2),jugada(pos(3,2),1),jugada(pos(3,3),1),jugada(pos(3, 4), 0),
+        -:   36:        jugada(pos(4, 3), 1),jugada(pos(4, 4), 0)
+        -:   37:};
+        -:   38:banderitas b = {
+        -:   39:        pos(0,0), pos(0,1), pos(0,3),
+        -:   40:        pos(4,0),pos(4,2)
+        -:   41:};
+        -:   42:
+        2:   43:TEST(jugarPlusTEST, noHayPosicionesSinMinasAdyacentesMarcadasComoBanderita){
+        1:   44:    pos p = pos(1,0);
+        1:   45:    jugarPlus(t_jugarPlus,b,p,j0_1);
+       1*:   46:    ASSERT_TRUE(mantieneJugadas(j0_1,j_1) && jugadasNoRepetidas(j0_1) && incluyeJugadaActual(t_jugarPlus,j0_1,p));
+       1*:   47:    ASSERT_TRUE(esPermutacionDeJugadas(j0_1,j_1));
+        -:   48:}
+------------------
+_ZN73jugarPlusTEST_noHayPosicionesSinMinasAdyacentesMarcadasComoBanderita_Test8TestBodyEv:
+function _ZN73jugarPlusTEST_noHayPosicionesSinMinasAdyacentesMarcadasComoBanderita_Test8TestBodyEv called 1 returned 100% blocks executed 34%
+        1:   43:TEST(jugarPlusTEST, noHayPosicionesSinMinasAdyacentesMarcadasComoBanderita){
+        1:   44:    pos p = pos(1,0);
+        1:   45:    jugarPlus(t_jugarPlus,b,p,j0_1);
+        1:   45-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   46:    ASSERT_TRUE(mantieneJugadas(j0_1,j_1) && jugadasNoRepetidas(j0_1) && incluyeJugadaActual(t_jugarPlus,j0_1,p));
+        1:   46-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   46-block  1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0
+        1:   46-block  2
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:   46-block  3
+branch  8 taken 1 (fallthrough)
+branch  9 taken 0
+        1:   46-block  4
+call   10 returned 1
+branch 11 taken 1 (fallthrough)
+branch 12 taken 0 (throw)
+        1:   46-block  5
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0
+        1:   46-block  6
+    %%%%%:   46-block  7
+        1:   46-block  8
+call   15 returned 1
+branch 16 taken 1 (fallthrough)
+branch 17 taken 0 (throw)
+        1:   46-block  9
+call   18 returned 1
+branch 19 taken 0 (fallthrough)
+branch 20 taken 1
+    %%%%%:   46-block 10
+call   21 never executed
+branch 22 never executed
+branch 23 never executed
+    %%%%%:   46-block 11
+call   24 never executed
+branch 25 never executed
+branch 26 never executed
+    %%%%%:   46-block 12
+call   27 never executed
+call   28 never executed
+branch 29 never executed
+branch 30 never executed
+    %%%%%:   46-block 13
+call   31 never executed
+branch 32 never executed
+branch 33 never executed
+    %%%%%:   46-block 14
+call   34 never executed
+call   35 never executed
+call   36 never executed
+        1:   46-block 15
+        1:   46-block 16
+call   37 returned 1
+branch 38 taken 1 (fallthrough)
+branch 39 taken 0
+    $$$$$:   46-block 17
+    $$$$$:   46-block 18
+call   40 never executed
+    $$$$$:   46-block 19
+    $$$$$:   46-block 20
+call   41 never executed
+    $$$$$:   46-block 21
+    $$$$$:   46-block 22
+call   42 never executed
+    $$$$$:   46-block 23
+    $$$$$:   46-block 24
+call   43 never executed
+       1*:   47:    ASSERT_TRUE(esPermutacionDeJugadas(j0_1,j_1));
+        1:   47-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   47-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   47-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   47-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   47-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   47-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   47-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   47-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   47-block  8
+        1:   47-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   47-block 10
+    $$$$$:   47-block 11
+call   28 never executed
+    $$$$$:   47-block 12
+    $$$$$:   47-block 13
+call   29 never executed
+    $$$$$:   47-block 14
+    $$$$$:   47-block 15
+call   30 never executed
+    $$$$$:   47-block 16
+    $$$$$:   47-block 17
+call   31 never executed
+        -:   48:}
+------------------
+_ZN73jugarPlusTEST_noHayPosicionesSinMinasAdyacentesMarcadasComoBanderita_TestC1Ev:
+function _ZN73jugarPlusTEST_noHayPosicionesSinMinasAdyacentesMarcadasComoBanderita_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   43:TEST(jugarPlusTEST, noHayPosicionesSinMinasAdyacentesMarcadasComoBanderita){
+        1:   43-block  0
+call    0 returned 1
+------------------
+        -:   49:
+        -:   50:jugadas j0_2 = {
+        -:   51:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:   52:};
+        -:   53:jugadas j1_2 = {
+        -:   54:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:   55:        jugada(pos(1,0),2),jugada(pos(1,1),2),jugada(pos(1,2),2),jugada(pos(1,3),1),
+        -:   56:        jugada(pos(2, 0), 0),jugada(pos(2, 1), 0),jugada(pos(2, 2), 0),
+        -:   57:        jugada(pos(3,0),1),jugada(pos(3,1),2),jugada(pos(3,2),1),jugada(pos(3,3),1)
+        -:   58:};
+        -:   59:banderitas b_2 = {
+        -:   60:        pos(0,0), pos(0,1), pos(0,3),
+        -:   61:        pos(2,3),
+        -:   62:        pos(4,0),pos(4,2)
+        -:   63:};
+        2:   64:TEST(jugarPlusTEST, hayPosicionesSinMinasAdyacentesMarcadasComoBanderita){
+        1:   65:    pos p = pos(1,0);
+        1:   66:    jugarPlus(t_jugarPlus,b_2,p,j0_2);
+       1*:   67:    ASSERT_TRUE(mantieneJugadas(j0_2,j1_2) && jugadasNoRepetidas(j0_2) && incluyeJugadaActual(t_jugarPlus,j0_2,p));
+       1*:   68:    ASSERT_TRUE(esPermutacionDeJugadas(j0_2,j1_2));
+        -:   69:}
+------------------
+_ZN71jugarPlusTEST_hayPosicionesSinMinasAdyacentesMarcadasComoBanderita_Test8TestBodyEv:
+function _ZN71jugarPlusTEST_hayPosicionesSinMinasAdyacentesMarcadasComoBanderita_Test8TestBodyEv called 1 returned 100% blocks executed 34%
+        1:   64:TEST(jugarPlusTEST, hayPosicionesSinMinasAdyacentesMarcadasComoBanderita){
+        1:   65:    pos p = pos(1,0);
+        1:   66:    jugarPlus(t_jugarPlus,b_2,p,j0_2);
+        1:   66-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   67:    ASSERT_TRUE(mantieneJugadas(j0_2,j1_2) && jugadasNoRepetidas(j0_2) && incluyeJugadaActual(t_jugarPlus,j0_2,p));
+        1:   67-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   67-block  1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0
+        1:   67-block  2
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:   67-block  3
+branch  8 taken 1 (fallthrough)
+branch  9 taken 0
+        1:   67-block  4
+call   10 returned 1
+branch 11 taken 1 (fallthrough)
+branch 12 taken 0 (throw)
+        1:   67-block  5
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0
+        1:   67-block  6
+    %%%%%:   67-block  7
+        1:   67-block  8
+call   15 returned 1
+branch 16 taken 1 (fallthrough)
+branch 17 taken 0 (throw)
+        1:   67-block  9
+call   18 returned 1
+branch 19 taken 0 (fallthrough)
+branch 20 taken 1
+    %%%%%:   67-block 10
+call   21 never executed
+branch 22 never executed
+branch 23 never executed
+    %%%%%:   67-block 11
+call   24 never executed
+branch 25 never executed
+branch 26 never executed
+    %%%%%:   67-block 12
+call   27 never executed
+call   28 never executed
+branch 29 never executed
+branch 30 never executed
+    %%%%%:   67-block 13
+call   31 never executed
+branch 32 never executed
+branch 33 never executed
+    %%%%%:   67-block 14
+call   34 never executed
+call   35 never executed
+call   36 never executed
+        1:   67-block 15
+        1:   67-block 16
+call   37 returned 1
+branch 38 taken 1 (fallthrough)
+branch 39 taken 0
+    $$$$$:   67-block 17
+    $$$$$:   67-block 18
+call   40 never executed
+    $$$$$:   67-block 19
+    $$$$$:   67-block 20
+call   41 never executed
+    $$$$$:   67-block 21
+    $$$$$:   67-block 22
+call   42 never executed
+    $$$$$:   67-block 23
+    $$$$$:   67-block 24
+call   43 never executed
+       1*:   68:    ASSERT_TRUE(esPermutacionDeJugadas(j0_2,j1_2));
+        1:   68-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   68-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   68-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   68-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   68-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   68-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   68-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   68-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   68-block  8
+        1:   68-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   68-block 10
+    $$$$$:   68-block 11
+call   28 never executed
+    $$$$$:   68-block 12
+    $$$$$:   68-block 13
+call   29 never executed
+    $$$$$:   68-block 14
+    $$$$$:   68-block 15
+call   30 never executed
+    $$$$$:   68-block 16
+    $$$$$:   68-block 17
+call   31 never executed
+        -:   69:}
+------------------
+_ZN71jugarPlusTEST_hayPosicionesSinMinasAdyacentesMarcadasComoBanderita_TestC1Ev:
+function _ZN71jugarPlusTEST_hayPosicionesSinMinasAdyacentesMarcadasComoBanderita_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   64:TEST(jugarPlusTEST, hayPosicionesSinMinasAdyacentesMarcadasComoBanderita){
+        1:   64-block  0
+call    0 returned 1
+------------------
+        -:   70:
+        -:   71:jugadas j0_3 = {
+        -:   72:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:   73:};
+        -:   74:jugadas j1_3 = {
+        -:   75:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:   76:        jugada(pos(1,0),2),jugada(pos(1,1),2),jugada(pos(1,2),2),jugada(pos(1,3),1),jugada(pos(1,4),1),
+        -:   77:        jugada(pos(2, 0), 0),jugada(pos(2, 1), 0),jugada(pos(2, 2), 0),jugada(pos(2, 3), 0),jugada(pos(2,4),0),
+        -:   78:        jugada(pos(3,0),1),jugada(pos(3,1),2),jugada(pos(3,2),1),jugada(pos(3,3),1),jugada(pos(3, 4), 0),
+        -:   79:        jugada(pos(4, 3), 1),jugada(pos(4, 4), 0)
+        -:   80:};
+        -:   81:banderitas b_3 = {};
+        -:   82:
+        2:   83:TEST(jugarPlusTEST, empiezoDesdePosicionSinMinasAdyacentesYSinBanderitasMarcadas){
+        1:   84:    pos p = pos(2,2);
+        1:   85:    jugarPlus(t_jugarPlus,b_3,p,j0_3);
+       1*:   86:    ASSERT_TRUE(mantieneJugadas(j0_3,j1_3) && jugadasNoRepetidas(j0_3) && incluyeJugadaActual(t_jugarPlus,j0_3,p));
+       1*:   87:    ASSERT_TRUE(esPermutacionDeJugadas(j0_3,j1_3));
+        -:   88:}
+------------------
+_ZN79jugarPlusTEST_empiezoDesdePosicionSinMinasAdyacentesYSinBanderitasMarcadas_Test8TestBodyEv:
+function _ZN79jugarPlusTEST_empiezoDesdePosicionSinMinasAdyacentesYSinBanderitasMarcadas_Test8TestBodyEv called 1 returned 100% blocks executed 34%
+        1:   83:TEST(jugarPlusTEST, empiezoDesdePosicionSinMinasAdyacentesYSinBanderitasMarcadas){
+        1:   84:    pos p = pos(2,2);
+        1:   85:    jugarPlus(t_jugarPlus,b_3,p,j0_3);
+        1:   85-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   86:    ASSERT_TRUE(mantieneJugadas(j0_3,j1_3) && jugadasNoRepetidas(j0_3) && incluyeJugadaActual(t_jugarPlus,j0_3,p));
+        1:   86-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   86-block  1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0
+        1:   86-block  2
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:   86-block  3
+branch  8 taken 1 (fallthrough)
+branch  9 taken 0
+        1:   86-block  4
+call   10 returned 1
+branch 11 taken 1 (fallthrough)
+branch 12 taken 0 (throw)
+        1:   86-block  5
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0
+        1:   86-block  6
+    %%%%%:   86-block  7
+        1:   86-block  8
+call   15 returned 1
+branch 16 taken 1 (fallthrough)
+branch 17 taken 0 (throw)
+        1:   86-block  9
+call   18 returned 1
+branch 19 taken 0 (fallthrough)
+branch 20 taken 1
+    %%%%%:   86-block 10
+call   21 never executed
+branch 22 never executed
+branch 23 never executed
+    %%%%%:   86-block 11
+call   24 never executed
+branch 25 never executed
+branch 26 never executed
+    %%%%%:   86-block 12
+call   27 never executed
+call   28 never executed
+branch 29 never executed
+branch 30 never executed
+    %%%%%:   86-block 13
+call   31 never executed
+branch 32 never executed
+branch 33 never executed
+    %%%%%:   86-block 14
+call   34 never executed
+call   35 never executed
+call   36 never executed
+        1:   86-block 15
+        1:   86-block 16
+call   37 returned 1
+branch 38 taken 1 (fallthrough)
+branch 39 taken 0
+    $$$$$:   86-block 17
+    $$$$$:   86-block 18
+call   40 never executed
+    $$$$$:   86-block 19
+    $$$$$:   86-block 20
+call   41 never executed
+    $$$$$:   86-block 21
+    $$$$$:   86-block 22
+call   42 never executed
+    $$$$$:   86-block 23
+    $$$$$:   86-block 24
+call   43 never executed
+       1*:   87:    ASSERT_TRUE(esPermutacionDeJugadas(j0_3,j1_3));
+        1:   87-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   87-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   87-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   87-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   87-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   87-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   87-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   87-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   87-block  8
+        1:   87-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   87-block 10
+    $$$$$:   87-block 11
+call   28 never executed
+    $$$$$:   87-block 12
+    $$$$$:   87-block 13
+call   29 never executed
+    $$$$$:   87-block 14
+    $$$$$:   87-block 15
+call   30 never executed
+    $$$$$:   87-block 16
+    $$$$$:   87-block 17
+call   31 never executed
+        -:   88:}
+------------------
+_ZN79jugarPlusTEST_empiezoDesdePosicionSinMinasAdyacentesYSinBanderitasMarcadas_TestC1Ev:
+function _ZN79jugarPlusTEST_empiezoDesdePosicionSinMinasAdyacentesYSinBanderitasMarcadas_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   83:TEST(jugarPlusTEST, empiezoDesdePosicionSinMinasAdyacentesYSinBanderitasMarcadas){
+        1:   83-block  0
+call    0 returned 1
+------------------
+        -:   89:
+        -:   90:
+        -:   91:jugadas j0_4 = {
+        -:   92:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1)
+        -:   93:};
+        -:   94:jugadas j1_4 = {
+        -:   95:        jugada(pos(0, 2), 2),jugada(pos(0, 3), 0),jugada(pos(0, 4), 1)
+        -:   96:};
+        -:   97:banderitas b_4 = {};
+        -:   98:
+        2:   99:TEST(jugarPlusTEST, juegoPosicionConMina){
+        1:  100:    pos p = pos(0,3);
+        1:  101:    jugarPlus(t_jugarPlus,b_4,p,j0_4);
+       1*:  102:    ASSERT_TRUE(mantieneJugadas(j0_4,j1_4) && jugadasNoRepetidas(j0_4) && incluyeJugadaActual(t_jugarPlus,j0_4,p));
+       1*:  103:    ASSERT_TRUE(esPermutacionDeJugadas(j0_4,j1_4));
+        -:  104:}
+------------------
+_ZN39jugarPlusTEST_juegoPosicionConMina_Test8TestBodyEv:
+function _ZN39jugarPlusTEST_juegoPosicionConMina_Test8TestBodyEv called 1 returned 100% blocks executed 34%
+        1:   99:TEST(jugarPlusTEST, juegoPosicionConMina){
+        1:  100:    pos p = pos(0,3);
+        1:  101:    jugarPlus(t_jugarPlus,b_4,p,j0_4);
+        1:  101-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  102:    ASSERT_TRUE(mantieneJugadas(j0_4,j1_4) && jugadasNoRepetidas(j0_4) && incluyeJugadaActual(t_jugarPlus,j0_4,p));
+        1:  102-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  102-block  1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0
+        1:  102-block  2
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:  102-block  3
+branch  8 taken 1 (fallthrough)
+branch  9 taken 0
+        1:  102-block  4
+call   10 returned 1
+branch 11 taken 1 (fallthrough)
+branch 12 taken 0 (throw)
+        1:  102-block  5
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0
+        1:  102-block  6
+    %%%%%:  102-block  7
+        1:  102-block  8
+call   15 returned 1
+branch 16 taken 1 (fallthrough)
+branch 17 taken 0 (throw)
+        1:  102-block  9
+call   18 returned 1
+branch 19 taken 0 (fallthrough)
+branch 20 taken 1
+    %%%%%:  102-block 10
+call   21 never executed
+branch 22 never executed
+branch 23 never executed
+    %%%%%:  102-block 11
+call   24 never executed
+branch 25 never executed
+branch 26 never executed
+    %%%%%:  102-block 12
+call   27 never executed
+call   28 never executed
+branch 29 never executed
+branch 30 never executed
+    %%%%%:  102-block 13
+call   31 never executed
+branch 32 never executed
+branch 33 never executed
+    %%%%%:  102-block 14
+call   34 never executed
+call   35 never executed
+call   36 never executed
+        1:  102-block 15
+        1:  102-block 16
+call   37 returned 1
+branch 38 taken 1 (fallthrough)
+branch 39 taken 0
+    $$$$$:  102-block 17
+    $$$$$:  102-block 18
+call   40 never executed
+    $$$$$:  102-block 19
+    $$$$$:  102-block 20
+call   41 never executed
+    $$$$$:  102-block 21
+    $$$$$:  102-block 22
+call   42 never executed
+    $$$$$:  102-block 23
+    $$$$$:  102-block 24
+call   43 never executed
+       1*:  103:    ASSERT_TRUE(esPermutacionDeJugadas(j0_4,j1_4));
+        1:  103-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  103-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  103-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  103-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:  103-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:  103-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  103-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:  103-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:  103-block  8
+        1:  103-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:  103-block 10
+    $$$$$:  103-block 11
+call   28 never executed
+    $$$$$:  103-block 12
+    $$$$$:  103-block 13
+call   29 never executed
+    $$$$$:  103-block 14
+    $$$$$:  103-block 15
+call   30 never executed
+    $$$$$:  103-block 16
+    $$$$$:  103-block 17
+call   31 never executed
+        -:  104:}
+------------------
+_ZN39jugarPlusTEST_juegoPosicionConMina_TestC1Ev:
+function _ZN39jugarPlusTEST_juegoPosicionConMina_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   99:TEST(jugarPlusTEST, juegoPosicionConMina){
+        1:   99-block  0
+call    0 returned 1
+------------------
+        -:  105:
+        -:  106:// ┌───┬───┬───┬───┬───┐
+        -:  107:// │ 0 │ 0 │ 0 │ 0 │ 0 │
+        -:  108:// ├───┼───┼───┼───┼───┤
+        -:  109:// │ 0 │ 1 │ 1 │ 1 │ 0 │
+        -:  110:// ├───┼───┼───┼───┼───┤
+        -:  111:// │ 0 │ 1 │ * │ 1 │ 0 │
+        -:  112:// ├───┼───┼───┼───┼───┤
+        -:  113:// │ 0 │ 1 │ 1 │ 1 │ 0 │
+        -:  114:// ├───┼───┼───┼───┼───┤
+        -:  115:// │ 0 │ 0 │ 0 │ 0 │ 0 │
+        -:  116:// └───┴───┴───┴───┴───┘
+        -:  117:tablero t_jugarPlus_2 = {
+        -:  118:        { cVACIA,  cVACIA,  cVACIA, cVACIA, cVACIA },
+        -:  119:        { cVACIA, cVACIA, cVACIA, cVACIA,  cVACIA },
+        -:  120:        { cVACIA, cVACIA,  cMINA, cVACIA, cVACIA },
+        -:  121:        { cVACIA, cVACIA, cVACIA, cVACIA, cVACIA },
+        -:  122:        { cVACIA,  cVACIA, cVACIA,  cVACIA, cVACIA },
+        -:  123:};
+        -:  124:jugadas j0_5 = {};
+        -:  125:jugadas j1_5 = {
+        -:  126:        jugada(pos(0, 0), 0),jugada(pos(0, 1), 0),jugada(pos(0, 2), 0),jugada(pos(0, 3), 0),jugada(pos(0, 4), 0),
+        -:  127:        jugada(pos(1, 0), 0),jugada(pos(1, 1), 1),jugada(pos(1, 2), 1),jugada(pos(1, 3), 1),jugada(pos(1, 4), 0),
+        -:  128:        jugada(pos(2, 0), 0),jugada(pos(2, 1), 1),jugada(pos(2, 3), 1),jugada(pos(2, 4), 0),
+        -:  129:        jugada(pos(3, 0), 0),jugada(pos(3, 1), 1),jugada(pos(3, 2), 1),jugada(pos(3, 3), 1),jugada(pos(3, 4), 0),
+        -:  130:        jugada(pos(4, 0), 0),jugada(pos(4, 1), 0),jugada(pos(4, 2), 0),jugada(pos(4, 3), 0),jugada(pos(4, 4), 0),
+        -:  131:};
+        -:  132:banderitas b_5 = {pos(2,2)};
+        -:  133:
+        2:  134:TEST(jugarPlusTEST, primeraJugada){
+        1:  135:    pos p = pos(0,0);
+        1:  136:    jugarPlus(t_jugarPlus_2,b_5,p,j0_5);
+       1*:  137:    ASSERT_TRUE(mantieneJugadas(j0_5,j1_5) && jugadasNoRepetidas(j0_5) && incluyeJugadaActual(t_jugarPlus_2,j0_5,p));
+       1*:  138:    ASSERT_TRUE(esPermutacionDeJugadas(j0_5,j1_5));
+        -:  139:}

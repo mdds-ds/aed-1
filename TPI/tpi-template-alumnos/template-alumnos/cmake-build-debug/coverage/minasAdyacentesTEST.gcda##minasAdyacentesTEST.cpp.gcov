@@ -1,0 +1,294 @@
+        -:    0:Source:C:/Users/mdds2/OneDrive/Escritorio/UBA/Algo I/TPI/tpi-template-alumnos/template-alumnos/tests/minasAdyacentesTEST.cpp
+        -:    0:Graph:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\tests\minasAdyacentesTEST.gcno
+        -:    0:Data:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\tests\minasAdyacentesTEST.gcda
+        -:    0:Runs:1
+        -:    1:// Tests para la función minasAdyacentes.
+        -:    2:// Ver el archivo README.md para ayuda
+        -:    3:
+        -:    4:#include "../ejercicios.h"
+        -:    5:#include "../auxiliares.h"
+        -:    6:#include "../definiciones.h"
+        -:    7:#include "gtest/gtest.h"
+        -:    8:
+        -:    9:using namespace std;
+        -:   10:
+        -:   11:tablero t_minas = {
+        -:   12:        { cMINA,  cMINA,  cVACIA, cVACIA, cVACIA },
+        -:   13:        { cVACIA, cVACIA, cVACIA, cMINA,  cVACIA },
+        -:   14:        { cVACIA, cMINA,  cVACIA, cVACIA, cVACIA },
+        -:   15:        { cVACIA, cVACIA, cVACIA, cVACIA, cVACIA },
+        -:   16:        { cMINA,  cVACIA, cMINA,  cVACIA, cVACIA },
+        -:   17:};
+        -:   18:
+        -:   19:// ┌───┬───┬───┬───┬───┐
+        -:   20:// │ * │ * │ 2 │ 1 │ 1 │
+        -:   21:// ├───┼───┼───┼───┼───┤
+        -:   22:// │ 3 │ 3 │ 3 │ * │ 1 │
+        -:   23:// ├───┼───┼───┼───┼───┤
+        -:   24:// │ 1 │ * │ 2 │ 1 │ 1 │
+        -:   25:// ├───┼───┼───┼───┼───┤
+        -:   26:// │ 2 │ 3 │ 2 │ 1 │ 0 │
+        -:   27:// ├───┼───┼───┼───┼───┤
+        -:   28:// │ * │ 2 │ * │ 1 │ 0 │
+        -:   29:// └───┴───┴───┴───┴───┘
+        -:   30:
+        -:   31:pos p = make_pair(1,0);
+        2:   32:TEST(minasAdyacentesTEST, posicionUnoCero) {
+       1*:   33:    ASSERT_EQ(minasAdyacentes(t_minas,p),3);
+        -:   34:}
+------------------
+_ZN40minasAdyacentesTEST_posicionUnoCero_Test8TestBodyEv:
+function _ZN40minasAdyacentesTEST_posicionUnoCero_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:   32:TEST(minasAdyacentesTEST, posicionUnoCero) {
+       1*:   33:    ASSERT_EQ(minasAdyacentes(t_minas,p),3);
+        1:   33-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   33-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   33-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   33-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   33-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   33-block  5
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+    %%%%%:   33-block  6
+call   18 never executed
+branch 19 never executed
+branch 20 never executed
+    %%%%%:   33-block  7
+call   21 never executed
+call   22 never executed
+        1:   33-block  8
+        1:   33-block  9
+call   23 returned 1
+branch 24 taken 1 (fallthrough)
+branch 25 taken 0
+    $$$$$:   33-block 10
+    $$$$$:   33-block 11
+    $$$$$:   33-block 12
+call   26 never executed
+    $$$$$:   33-block 13
+    $$$$$:   33-block 14
+call   27 never executed
+    $$$$$:   33-block 15
+    $$$$$:   33-block 16
+call   28 never executed
+        -:   34:}
+------------------
+_ZN40minasAdyacentesTEST_posicionUnoCero_TestC1Ev:
+function _ZN40minasAdyacentesTEST_posicionUnoCero_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   32:TEST(minasAdyacentesTEST, posicionUnoCero) {
+        1:   32-block  0
+call    0 returned 1
+------------------
+        -:   35:
+        -:   36:pos p1 = make_pair(5,5);
+        2:   37:TEST(minasAdyacentesTEST, noHayMinas) {
+       1*:   38:    ASSERT_EQ(minasAdyacentes(t_minas,p1),0);
+        -:   39:}
+------------------
+_ZN35minasAdyacentesTEST_noHayMinas_Test8TestBodyEv:
+function _ZN35minasAdyacentesTEST_noHayMinas_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:   37:TEST(minasAdyacentesTEST, noHayMinas) {
+       1*:   38:    ASSERT_EQ(minasAdyacentes(t_minas,p1),0);
+        1:   38-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   38-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   38-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   38-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   38-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   38-block  5
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+    %%%%%:   38-block  6
+call   18 never executed
+branch 19 never executed
+branch 20 never executed
+    %%%%%:   38-block  7
+call   21 never executed
+call   22 never executed
+        1:   38-block  8
+        1:   38-block  9
+call   23 returned 1
+branch 24 taken 1 (fallthrough)
+branch 25 taken 0
+    $$$$$:   38-block 10
+    $$$$$:   38-block 11
+    $$$$$:   38-block 12
+call   26 never executed
+    $$$$$:   38-block 13
+    $$$$$:   38-block 14
+call   27 never executed
+    $$$$$:   38-block 15
+    $$$$$:   38-block 16
+call   28 never executed
+        -:   39:}
+------------------
+_ZN35minasAdyacentesTEST_noHayMinas_TestC1Ev:
+function _ZN35minasAdyacentesTEST_noHayMinas_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   37:TEST(minasAdyacentesTEST, noHayMinas) {
+        1:   37-block  0
+call    0 returned 1
+------------------
+        -:   40:
+        -:   41:pos p2 = make_pair(0,1);
+        2:   42:TEST(minasAdyacentesTEST, posicionCeroUnoConMina) {
+       1*:   43:    ASSERT_EQ(minasAdyacentes(t_minas,p2),1);
+        -:   44:}
+------------------
+_ZN47minasAdyacentesTEST_posicionCeroUnoConMina_Test8TestBodyEv:
+function _ZN47minasAdyacentesTEST_posicionCeroUnoConMina_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:   42:TEST(minasAdyacentesTEST, posicionCeroUnoConMina) {
+       1*:   43:    ASSERT_EQ(minasAdyacentes(t_minas,p2),1);
+        1:   43-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   43-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   43-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   43-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   43-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   43-block  5
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+    %%%%%:   43-block  6
+call   18 never executed
+branch 19 never executed
+branch 20 never executed
+    %%%%%:   43-block  7
+call   21 never executed
+call   22 never executed
+        1:   43-block  8
+        1:   43-block  9
+call   23 returned 1
+branch 24 taken 1 (fallthrough)
+branch 25 taken 0
+    $$$$$:   43-block 10
+    $$$$$:   43-block 11
+    $$$$$:   43-block 12
+call   26 never executed
+    $$$$$:   43-block 13
+    $$$$$:   43-block 14
+call   27 never executed
+    $$$$$:   43-block 15
+    $$$$$:   43-block 16
+call   28 never executed
+        -:   44:}
+------------------
+_ZN47minasAdyacentesTEST_posicionCeroUnoConMina_TestC1Ev:
+function _ZN47minasAdyacentesTEST_posicionCeroUnoConMina_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   42:TEST(minasAdyacentesTEST, posicionCeroUnoConMina) {
+        1:   42-block  0
+call    0 returned 1
+------------------
+        -:   45:
+        -:   46:pos p3 = make_pair(2,4);
+        2:   47:TEST(minasAdyacentesTEST, posicionLimiteHorizontal) {
+       1*:   48:    ASSERT_EQ(minasAdyacentes(t_minas,p3),1);
+        -:   49:}
+------------------
+_ZN49minasAdyacentesTEST_posicionLimiteHorizontal_Test8TestBodyEv:
+function _ZN49minasAdyacentesTEST_posicionLimiteHorizontal_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:   47:TEST(minasAdyacentesTEST, posicionLimiteHorizontal) {
+       1*:   48:    ASSERT_EQ(minasAdyacentes(t_minas,p3),1);
+        1:   48-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   48-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   48-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   48-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   48-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   48-block  5
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+    %%%%%:   48-block  6
+call   18 never executed
+branch 19 never executed
+branch 20 never executed
+    %%%%%:   48-block  7
+call   21 never executed
+call   22 never executed
+        1:   48-block  8
+        1:   48-block  9
+call   23 returned 1
+branch 24 taken 1 (fallthrough)
+branch 25 taken 0
+    $$$$$:   48-block 10
+    $$$$$:   48-block 11
+    $$$$$:   48-block 12
+call   26 never executed
+    $$$$$:   48-block 13
+    $$$$$:   48-block 14
+call   27 never executed
+    $$$$$:   48-block 15
+    $$$$$:   48-block 16
+call   28 never executed
+        -:   49:}
+------------------
+_ZN49minasAdyacentesTEST_posicionLimiteHorizontal_TestC1Ev:
+function _ZN49minasAdyacentesTEST_posicionLimiteHorizontal_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   47:TEST(minasAdyacentesTEST, posicionLimiteHorizontal) {
+        1:   47-block  0
+call    0 returned 1
+------------------
+        -:   50:
+        -:   51:pos p4 = make_pair(0,2);
+        2:   52:TEST(minasAdyacentesTEST, posicionLimiteVertical) {
+       1*:   53:    ASSERT_EQ(minasAdyacentes(t_minas,p4),2);
+        -:   54:}

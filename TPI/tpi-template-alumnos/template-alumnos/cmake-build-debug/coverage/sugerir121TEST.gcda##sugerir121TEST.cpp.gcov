@@ -1,0 +1,1580 @@
+        -:    0:Source:C:/Users/mdds2/OneDrive/Escritorio/UBA/Algo I/TPI/tpi-template-alumnos/template-alumnos/tests/sugerir121TEST.cpp
+        -:    0:Graph:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\tests\sugerir121TEST.gcno
+        -:    0:Data:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\tests\sugerir121TEST.gcda
+        -:    0:Runs:1
+        -:    1:// Tests para la función sugerir121.
+        -:    2:// Ver el archovo README.md para ayuda
+        -:    3:
+        -:    4:#include "../ejercicios.h"
+        -:    5:#include "../auxiliares.h"
+        -:    6:#include "gtest/gtest.h"
+        -:    7:
+        -:    8:using namespace std;
+        -:    9:
+        -:   10:
+        -:   11:// ┌───┬───┬───┬───┬───┐
+        -:   12:// │ * │ * │ 2 │ * │ 1 │
+        -:   13:// ├───┼───┼───┼───┼───┤
+        -:   14:// │ 2 │ 2 │ 3 │ 2 │ 2 │
+        -:   15:// ├───┼───┼───┼───┼───┤
+        -:   16:// │ 0 │ 0 │ 1 │ * │ 1 │
+        -:   17:// ├───┼───┼───┼───┼───┤
+        -:   18:// │ 1 │ 2 │ 1 │ 1 │ 1 │
+        -:   19:// ├───┼───┼───┼───┼───┤
+        -:   20:// │ * │ 2 │ * │ 1 │ 0 │
+        -:   21:// └───┴───┴───┴───┴───┘
+        -:   22:tablero t_121 = {
+        -:   23:        { cMINA,  cMINA,  cVACIA, cMINA, cVACIA },
+        -:   24:        { cVACIA, cVACIA, cVACIA, cVACIA,  cVACIA },
+        -:   25:        { cVACIA, cVACIA,  cVACIA, cMINA, cVACIA },
+        -:   26:        { cVACIA, cVACIA, cVACIA, cVACIA, cVACIA },
+        -:   27:        { cMINA,  cVACIA, cMINA,  cVACIA, cVACIA },
+        -:   28:};
+        -:   29:jugadas jugadasValidas121 = {
+        -:   30:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:   31:        jugada(pos(1, 0), 2),jugada(pos(1, 1), 2),jugada(pos(1, 2), 3),jugada(pos(1, 4), 2),
+        -:   32:        jugada(pos(2, 0), 0),jugada(pos(2, 1), 0),jugada(pos(2, 2), 1),jugada(pos(2, 4), 1),
+        -:   33:        jugada(pos(3, 0), 1),jugada(pos(3, 1), 2),jugada(pos(3, 2), 1),jugada(pos(3, 3), 1),jugada(pos(3, 4), 1),
+        -:   34:        jugada(pos(4, 3), 1),jugada(pos(4, 4), 0),
+        -:   35:};
+        -:   36:banderitas banderitasPuestas121 = {
+        -:   37:        pos(0,0), pos(0,1), pos(0,3),
+        -:   38:        pos(2,3),
+        -:   39:        pos(4,0),pos(4,2)
+        -:   40:};
+        2:   41:TEST(sugerir121TEST, hay121HorizontalYVerticalYDevuelveCualquieraYNoMarquePosicionSegura){
+        1:   42:    banderitas b = banderitasPuestas121;
+        1:   43:    jugadas j = jugadasValidas121;
+        1:   44:    pos p = make_pair(1,1);
+       1*:   45:    ASSERT_TRUE(sugerirAutomatico121(t_121, b, j, p));
+       1*:   46:    ASSERT_EQ(p,pos(4,1));
+        1:   47:}
+------------------
+_ZN87sugerir121TEST_hay121HorizontalYVerticalYDevuelveCualquieraYNoMarquePosicionSegura_Test8TestBodyEv:
+function _ZN87sugerir121TEST_hay121HorizontalYVerticalYDevuelveCualquieraYNoMarquePosicionSegura_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:   41:TEST(sugerir121TEST, hay121HorizontalYVerticalYDevuelveCualquieraYNoMarquePosicionSegura){
+        1:   42:    banderitas b = banderitasPuestas121;
+        1:   42-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   43:    jugadas j = jugadasValidas121;
+        1:   43-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   44:    pos p = make_pair(1,1);
+       1*:   45:    ASSERT_TRUE(sugerirAutomatico121(t_121, b, j, p));
+        1:   45-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   45-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   45-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   45-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   45-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   45-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   45-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   45-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   45-block  8
+        1:   45-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   45-block 10
+    $$$$$:   45-block 11
+call   28 never executed
+    $$$$$:   45-block 12
+    $$$$$:   45-block 13
+call   29 never executed
+    $$$$$:   45-block 14
+    $$$$$:   45-block 15
+call   30 never executed
+    $$$$$:   45-block 16
+    $$$$$:   45-block 17
+call   31 never executed
+       1*:   46:    ASSERT_EQ(p,pos(4,1));
+        1:   46-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   46-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   46-block  2
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+    %%%%%:   46-block  3
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+    %%%%%:   46-block  4
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+    %%%%%:   46-block  5
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   46-block  6
+call   19 never executed
+call   20 never executed
+        1:   46-block  7
+        1:   46-block  8
+call   21 returned 1
+branch 22 taken 1 (fallthrough)
+branch 23 taken 0
+    $$$$$:   46-block  9
+    $$$$$:   46-block 10
+    $$$$$:   46-block 11
+    $$$$$:   46-block 12
+call   24 never executed
+    $$$$$:   46-block 13
+    $$$$$:   46-block 14
+call   25 never executed
+    $$$$$:   46-block 15
+    $$$$$:   46-block 16
+call   26 never executed
+        1:   47:}
+        1:   47-block  0
+        1:   47-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:   47-block  2
+        1:   47-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:   47-block  4
+call    6 never executed
+    $$$$$:   47-block  5
+call    7 never executed
+------------------
+_ZN87sugerir121TEST_hay121HorizontalYVerticalYDevuelveCualquieraYNoMarquePosicionSegura_TestC1Ev:
+function _ZN87sugerir121TEST_hay121HorizontalYVerticalYDevuelveCualquieraYNoMarquePosicionSegura_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   41:TEST(sugerir121TEST, hay121HorizontalYVerticalYDevuelveCualquieraYNoMarquePosicionSegura){
+        1:   41-block  0
+call    0 returned 1
+------------------
+        -:   48:banderitas banderitasPuestas121ConUnaPosicionSeguraMarcada = {
+        -:   49:        pos(0,0), pos(0,1), pos(0,3),
+        -:   50:        pos(2,3),
+        -:   51:        pos(4,0),pos(4,1),pos(4,2)
+        -:   52:};
+        2:   53:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroMarqueUnaPosicionSegura){
+        1:   54:    banderitas b = banderitasPuestas121ConUnaPosicionSeguraMarcada;
+        1:   55:    jugadas j = jugadasValidas121;
+        1:   56:    pos p = make_pair(1,1);
+       1*:   57:    ASSERT_TRUE(sugerirAutomatico121(t_121, b, j, p)); // True porque debería devolver el vertical ya que marco la posición segura horizontal.
+       1*:   58:    ASSERT_EQ(p,pos(1,3));
+        1:   59:}
+------------------
+_ZN72sugerir121TEST_hay121HorizontalYVerticalPeroMarqueUnaPosicionSegura_Test8TestBodyEv:
+function _ZN72sugerir121TEST_hay121HorizontalYVerticalPeroMarqueUnaPosicionSegura_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:   53:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroMarqueUnaPosicionSegura){
+        1:   54:    banderitas b = banderitasPuestas121ConUnaPosicionSeguraMarcada;
+        1:   54-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   55:    jugadas j = jugadasValidas121;
+        1:   55-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   56:    pos p = make_pair(1,1);
+       1*:   57:    ASSERT_TRUE(sugerirAutomatico121(t_121, b, j, p)); // True porque debería devolver el vertical ya que marco la posición segura horizontal.
+        1:   57-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   57-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   57-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   57-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   57-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   57-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   57-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   57-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   57-block  8
+        1:   57-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   57-block 10
+    $$$$$:   57-block 11
+call   28 never executed
+    $$$$$:   57-block 12
+    $$$$$:   57-block 13
+call   29 never executed
+    $$$$$:   57-block 14
+    $$$$$:   57-block 15
+call   30 never executed
+    $$$$$:   57-block 16
+    $$$$$:   57-block 17
+call   31 never executed
+       1*:   58:    ASSERT_EQ(p,pos(1,3));
+        1:   58-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   58-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   58-block  2
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+    %%%%%:   58-block  3
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+    %%%%%:   58-block  4
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+    %%%%%:   58-block  5
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   58-block  6
+call   19 never executed
+call   20 never executed
+        1:   58-block  7
+        1:   58-block  8
+call   21 returned 1
+branch 22 taken 1 (fallthrough)
+branch 23 taken 0
+    $$$$$:   58-block  9
+    $$$$$:   58-block 10
+    $$$$$:   58-block 11
+    $$$$$:   58-block 12
+call   24 never executed
+    $$$$$:   58-block 13
+    $$$$$:   58-block 14
+call   25 never executed
+    $$$$$:   58-block 15
+    $$$$$:   58-block 16
+call   26 never executed
+        1:   59:}
+        1:   59-block  0
+        1:   59-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:   59-block  2
+        1:   59-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:   59-block  4
+call    6 never executed
+    $$$$$:   59-block  5
+call    7 never executed
+------------------
+_ZN72sugerir121TEST_hay121HorizontalYVerticalPeroMarqueUnaPosicionSegura_TestC1Ev:
+function _ZN72sugerir121TEST_hay121HorizontalYVerticalPeroMarqueUnaPosicionSegura_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   53:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroMarqueUnaPosicionSegura){
+        1:   53-block  0
+call    0 returned 1
+------------------
+        -:   60:banderitas banderitasPuestas121ConTodasPosicionesSegurasMarcadas = {
+        -:   61:        pos(0,0), pos(0,1), pos(0,3),
+        -:   62:        pos(1,3),
+        -:   63:        pos(2,3),
+        -:   64:        pos(4,0),pos(4,1),pos(4,2)
+        -:   65:};
+        2:   66:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroMarqueTodasPosicionesSeguras){
+        1:   67:    banderitas b = banderitasPuestas121ConTodasPosicionesSegurasMarcadas;
+        1:   68:    jugadas j = jugadasValidas121;
+        1:   69:    pos p = make_pair(1,1);
+       1*:   70:    ASSERT_FALSE(sugerirAutomatico121(t_121, b, j, p));
+       1*:   71:    ASSERT_EQ(p,pos(1,1));
+        1:   72:}
+------------------
+_ZN77sugerir121TEST_hay121HorizontalYVerticalPeroMarqueTodasPosicionesSeguras_Test8TestBodyEv:
+function _ZN77sugerir121TEST_hay121HorizontalYVerticalPeroMarqueTodasPosicionesSeguras_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:   66:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroMarqueTodasPosicionesSeguras){
+        1:   67:    banderitas b = banderitasPuestas121ConTodasPosicionesSegurasMarcadas;
+        1:   67-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   68:    jugadas j = jugadasValidas121;
+        1:   68-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   69:    pos p = make_pair(1,1);
+       1*:   70:    ASSERT_FALSE(sugerirAutomatico121(t_121, b, j, p));
+        1:   70-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   70-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   70-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   70-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   70-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   70-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   70-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   70-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   70-block  8
+        1:   70-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   70-block 10
+    $$$$$:   70-block 11
+call   28 never executed
+    $$$$$:   70-block 12
+    $$$$$:   70-block 13
+call   29 never executed
+    $$$$$:   70-block 14
+    $$$$$:   70-block 15
+call   30 never executed
+    $$$$$:   70-block 16
+    $$$$$:   70-block 17
+call   31 never executed
+       1*:   71:    ASSERT_EQ(p,pos(1,1));
+        1:   71-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   71-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   71-block  2
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+    %%%%%:   71-block  3
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+    %%%%%:   71-block  4
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+    %%%%%:   71-block  5
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   71-block  6
+call   19 never executed
+call   20 never executed
+        1:   71-block  7
+        1:   71-block  8
+call   21 returned 1
+branch 22 taken 1 (fallthrough)
+branch 23 taken 0
+    $$$$$:   71-block  9
+    $$$$$:   71-block 10
+    $$$$$:   71-block 11
+    $$$$$:   71-block 12
+call   24 never executed
+    $$$$$:   71-block 13
+    $$$$$:   71-block 14
+call   25 never executed
+    $$$$$:   71-block 15
+    $$$$$:   71-block 16
+call   26 never executed
+        1:   72:}
+        1:   72-block  0
+        1:   72-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:   72-block  2
+        1:   72-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:   72-block  4
+call    6 never executed
+    $$$$$:   72-block  5
+call    7 never executed
+------------------
+_ZN77sugerir121TEST_hay121HorizontalYVerticalPeroMarqueTodasPosicionesSeguras_TestC1Ev:
+function _ZN77sugerir121TEST_hay121HorizontalYVerticalPeroMarqueTodasPosicionesSeguras_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   66:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroMarqueTodasPosicionesSeguras){
+        1:   66-block  0
+call    0 returned 1
+------------------
+        -:   73:jugadas jugadasValidas121ConUnaPosicionSeguraJugada = {
+        -:   74:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:   75:        jugada(pos(1, 0), 2),jugada(pos(1, 1), 2),jugada(pos(1, 2), 3),jugada(pos(1, 3), 2),jugada(pos(1, 4), 2),
+        -:   76:        jugada(pos(2, 0), 0),jugada(pos(2, 1), 0),jugada(pos(2, 2), 1),jugada(pos(2, 4), 1),
+        -:   77:        jugada(pos(3, 0), 1),jugada(pos(3, 1), 2),jugada(pos(3, 2), 1),jugada(pos(3, 3), 1),jugada(pos(3, 4), 1),
+        -:   78:        jugada(pos(4, 3), 1),jugada(pos(4, 4), 0),
+        -:   79:};
+        2:   80:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroJugueUnaPosicionSegura){
+        1:   81:    banderitas b = banderitasPuestas121;
+        1:   82:    jugadas j = jugadasValidas121ConUnaPosicionSeguraJugada;
+        1:   83:    pos p = make_pair(1,1);
+       1*:   84:    ASSERT_TRUE(sugerirAutomatico121(t_121, b, j, p));
+       1*:   85:    ASSERT_EQ(p,pos(4,1));
+        1:   86:}
+------------------
+_ZN71sugerir121TEST_hay121HorizontalYVerticalPeroJugueUnaPosicionSegura_Test8TestBodyEv:
+function _ZN71sugerir121TEST_hay121HorizontalYVerticalPeroJugueUnaPosicionSegura_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:   80:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroJugueUnaPosicionSegura){
+        1:   81:    banderitas b = banderitasPuestas121;
+        1:   81-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   82:    jugadas j = jugadasValidas121ConUnaPosicionSeguraJugada;
+        1:   82-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   83:    pos p = make_pair(1,1);
+       1*:   84:    ASSERT_TRUE(sugerirAutomatico121(t_121, b, j, p));
+        1:   84-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   84-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   84-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   84-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   84-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   84-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   84-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   84-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   84-block  8
+        1:   84-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   84-block 10
+    $$$$$:   84-block 11
+call   28 never executed
+    $$$$$:   84-block 12
+    $$$$$:   84-block 13
+call   29 never executed
+    $$$$$:   84-block 14
+    $$$$$:   84-block 15
+call   30 never executed
+    $$$$$:   84-block 16
+    $$$$$:   84-block 17
+call   31 never executed
+       1*:   85:    ASSERT_EQ(p,pos(4,1));
+        1:   85-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   85-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   85-block  2
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+    %%%%%:   85-block  3
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+    %%%%%:   85-block  4
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+    %%%%%:   85-block  5
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   85-block  6
+call   19 never executed
+call   20 never executed
+        1:   85-block  7
+        1:   85-block  8
+call   21 returned 1
+branch 22 taken 1 (fallthrough)
+branch 23 taken 0
+    $$$$$:   85-block  9
+    $$$$$:   85-block 10
+    $$$$$:   85-block 11
+    $$$$$:   85-block 12
+call   24 never executed
+    $$$$$:   85-block 13
+    $$$$$:   85-block 14
+call   25 never executed
+    $$$$$:   85-block 15
+    $$$$$:   85-block 16
+call   26 never executed
+        1:   86:}
+        1:   86-block  0
+        1:   86-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:   86-block  2
+        1:   86-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:   86-block  4
+call    6 never executed
+    $$$$$:   86-block  5
+call    7 never executed
+------------------
+_ZN71sugerir121TEST_hay121HorizontalYVerticalPeroJugueUnaPosicionSegura_TestC1Ev:
+function _ZN71sugerir121TEST_hay121HorizontalYVerticalPeroJugueUnaPosicionSegura_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   80:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroJugueUnaPosicionSegura){
+        1:   80-block  0
+call    0 returned 1
+------------------
+        -:   87:jugadas jugadasValidas121ConTodasLasPosicionesSegurasJugadas = {
+        -:   88:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:   89:        jugada(pos(1, 0), 2),jugada(pos(1, 1), 2),jugada(pos(1, 2), 3),jugada(pos(1, 3), 2),jugada(pos(1, 4), 2),
+        -:   90:        jugada(pos(2, 0), 0),jugada(pos(2, 1), 0),jugada(pos(2, 2), 1),jugada(pos(2, 4), 1),
+        -:   91:        jugada(pos(3, 0), 1),jugada(pos(3, 1), 2),jugada(pos(3, 2), 1),jugada(pos(3, 3), 1),jugada(pos(3, 4), 1),
+        -:   92:        jugada(pos(4, 1), 2),jugada(pos(4, 3), 1),jugada(pos(4, 4), 0),
+        -:   93:};
+        2:   94:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroJugueTodasPosicionesSeguras){
+        1:   95:    banderitas b = banderitasPuestas121;
+        1:   96:    jugadas j = jugadasValidas121ConTodasLasPosicionesSegurasJugadas;
+        1:   97:    pos p = make_pair(1,1);
+       1*:   98:    ASSERT_FALSE(sugerirAutomatico121(t_121, b, j, p));
+       1*:   99:    ASSERT_EQ(p,pos(1,1));
+        1:  100:}
+------------------
+_ZN76sugerir121TEST_hay121HorizontalYVerticalPeroJugueTodasPosicionesSeguras_Test8TestBodyEv:
+function _ZN76sugerir121TEST_hay121HorizontalYVerticalPeroJugueTodasPosicionesSeguras_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:   94:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroJugueTodasPosicionesSeguras){
+        1:   95:    banderitas b = banderitasPuestas121;
+        1:   95-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   96:    jugadas j = jugadasValidas121ConTodasLasPosicionesSegurasJugadas;
+        1:   96-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   97:    pos p = make_pair(1,1);
+       1*:   98:    ASSERT_FALSE(sugerirAutomatico121(t_121, b, j, p));
+        1:   98-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   98-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   98-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   98-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   98-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   98-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   98-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   98-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   98-block  8
+        1:   98-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   98-block 10
+    $$$$$:   98-block 11
+call   28 never executed
+    $$$$$:   98-block 12
+    $$$$$:   98-block 13
+call   29 never executed
+    $$$$$:   98-block 14
+    $$$$$:   98-block 15
+call   30 never executed
+    $$$$$:   98-block 16
+    $$$$$:   98-block 17
+call   31 never executed
+       1*:   99:    ASSERT_EQ(p,pos(1,1));
+        1:   99-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   99-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   99-block  2
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+    %%%%%:   99-block  3
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+    %%%%%:   99-block  4
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+    %%%%%:   99-block  5
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   99-block  6
+call   19 never executed
+call   20 never executed
+        1:   99-block  7
+        1:   99-block  8
+call   21 returned 1
+branch 22 taken 1 (fallthrough)
+branch 23 taken 0
+    $$$$$:   99-block  9
+    $$$$$:   99-block 10
+    $$$$$:   99-block 11
+    $$$$$:   99-block 12
+call   24 never executed
+    $$$$$:   99-block 13
+    $$$$$:   99-block 14
+call   25 never executed
+    $$$$$:   99-block 15
+    $$$$$:   99-block 16
+call   26 never executed
+        1:  100:}
+        1:  100-block  0
+        1:  100-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:  100-block  2
+        1:  100-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:  100-block  4
+call    6 never executed
+    $$$$$:  100-block  5
+call    7 never executed
+------------------
+_ZN76sugerir121TEST_hay121HorizontalYVerticalPeroJugueTodasPosicionesSeguras_TestC1Ev:
+function _ZN76sugerir121TEST_hay121HorizontalYVerticalPeroJugueTodasPosicionesSeguras_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   94:TEST(sugerir121TEST, hay121HorizontalYVerticalPeroJugueTodasPosicionesSeguras){
+        1:   94-block  0
+call    0 returned 1
+------------------
+        -:  101:
+        -:  102:
+        -:  103:
+        -:  104:// ┌───┬───┬───┬───┬───┐
+        -:  105:// │ * │ * │ 2 │ * │ 1 │
+        -:  106:// ├───┼───┼───┼───┼───┤
+        -:  107:// │ 2 │ 2 │ 3 │ 2 │ 2 │
+        -:  108:// ├───┼───┼───┼───┼───┤
+        -:  109:// │ 0 │ 0 │ 1 │ * │ 1 │
+        -:  110:// ├───┼───┼───┼───┼───┤
+        -:  111:// │ 1 │ 1 │ 1 │ 1 │ 1 │
+        -:  112:// ├───┼───┼───┼───┼───┤
+        -:  113:// │ * │ 1 │ 0 │ 0 │ 0 │
+        -:  114:// └───┴───┴───┴───┴───┘
+        -:  115:tablero t_121_vertical = {
+        -:  116:        { cMINA,  cMINA,  cVACIA, cMINA, cVACIA },
+        -:  117:        { cVACIA, cVACIA, cVACIA, cVACIA,  cVACIA },
+        -:  118:        { cVACIA, cVACIA,  cVACIA, cMINA, cVACIA },
+        -:  119:        { cVACIA, cVACIA, cVACIA, cVACIA, cVACIA },
+        -:  120:        { cMINA,  cVACIA, cVACIA,  cVACIA, cVACIA },
+        -:  121:};
+        -:  122:jugadas jugadasValidas121_vertical = {
+        -:  123:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:  124:        jugada(pos(1, 0), 2),jugada(pos(1, 1), 2),jugada(pos(1, 2), 3),jugada(pos(1, 4), 2),
+        -:  125:        jugada(pos(2, 0), 0),jugada(pos(2, 1), 0),jugada(pos(2, 2), 1),jugada(pos(2, 4), 1),
+        -:  126:        jugada(pos(3, 0), 1),jugada(pos(3, 1), 1),jugada(pos(3, 2), 1),jugada(pos(3, 3), 1),jugada(pos(3, 4), 1),
+        -:  127:        jugada(pos(4, 1), 1),jugada(pos(4, 2), 0),jugada(pos(4, 3), 0),jugada(pos(4, 4), 0),
+        -:  128:};
+        -:  129:banderitas banderitasPuestas121_vertical = {
+        -:  130:        pos(0,0), pos(0,1), pos(0,3),
+        -:  131:        pos(2,3),
+        -:  132:        pos(4,0),pos(4,2)
+        -:  133:};
+        2:  134:TEST(sugerir121TEST, hay121VerticalYNoMarquePosicionSegura){
+        1:  135:    banderitas b = banderitasPuestas121_vertical;
+        1:  136:    jugadas j = jugadasValidas121_vertical;
+        1:  137:    pos p = make_pair(3,1);
+       1*:  138:    ASSERT_TRUE(sugerirAutomatico121(t_121_vertical, b, j, p));
+       1*:  139:    ASSERT_EQ(p,pos(1,3));
+        1:  140:}
+------------------
+_ZN57sugerir121TEST_hay121VerticalYNoMarquePosicionSegura_Test8TestBodyEv:
+function _ZN57sugerir121TEST_hay121VerticalYNoMarquePosicionSegura_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:  134:TEST(sugerir121TEST, hay121VerticalYNoMarquePosicionSegura){
+        1:  135:    banderitas b = banderitasPuestas121_vertical;
+        1:  135-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  136:    jugadas j = jugadasValidas121_vertical;
+        1:  136-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  137:    pos p = make_pair(3,1);
+       1*:  138:    ASSERT_TRUE(sugerirAutomatico121(t_121_vertical, b, j, p));
+        1:  138-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  138-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  138-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  138-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:  138-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:  138-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  138-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:  138-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:  138-block  8
+        1:  138-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:  138-block 10
+    $$$$$:  138-block 11
+call   28 never executed
+    $$$$$:  138-block 12
+    $$$$$:  138-block 13
+call   29 never executed
+    $$$$$:  138-block 14
+    $$$$$:  138-block 15
+call   30 never executed
+    $$$$$:  138-block 16
+    $$$$$:  138-block 17
+call   31 never executed
+       1*:  139:    ASSERT_EQ(p,pos(1,3));
+        1:  139-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  139-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  139-block  2
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+    %%%%%:  139-block  3
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+    %%%%%:  139-block  4
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+    %%%%%:  139-block  5
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  139-block  6
+call   19 never executed
+call   20 never executed
+        1:  139-block  7
+        1:  139-block  8
+call   21 returned 1
+branch 22 taken 1 (fallthrough)
+branch 23 taken 0
+    $$$$$:  139-block  9
+    $$$$$:  139-block 10
+    $$$$$:  139-block 11
+    $$$$$:  139-block 12
+call   24 never executed
+    $$$$$:  139-block 13
+    $$$$$:  139-block 14
+call   25 never executed
+    $$$$$:  139-block 15
+    $$$$$:  139-block 16
+call   26 never executed
+        1:  140:}
+        1:  140-block  0
+        1:  140-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:  140-block  2
+        1:  140-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:  140-block  4
+call    6 never executed
+    $$$$$:  140-block  5
+call    7 never executed
+------------------
+_ZN57sugerir121TEST_hay121VerticalYNoMarquePosicionSegura_TestC1Ev:
+function _ZN57sugerir121TEST_hay121VerticalYNoMarquePosicionSegura_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  134:TEST(sugerir121TEST, hay121VerticalYNoMarquePosicionSegura){
+        1:  134-block  0
+call    0 returned 1
+------------------
+        -:  141:banderitas banderitasPuestas121_verticalMarcada = {
+        -:  142:        pos(0,0), pos(0,1), pos(0,3),
+        -:  143:        pos(1,3),
+        -:  144:        pos(2,3),
+        -:  145:        pos(4,0),pos(4,2)
+        -:  146:};
+        2:  147:TEST(sugerir121TEST, hay121VerticalYMarquePosicionSegura){
+        1:  148:    banderitas b = banderitasPuestas121_verticalMarcada;
+        1:  149:    jugadas j = jugadasValidas121_vertical;
+        1:  150:    pos p = make_pair(3,1);
+       1*:  151:    ASSERT_FALSE(sugerirAutomatico121(t_121_vertical, b, j, p));
+       1*:  152:    ASSERT_EQ(p,pos(3,1));
+        1:  153:}
+------------------
+_ZN55sugerir121TEST_hay121VerticalYMarquePosicionSegura_Test8TestBodyEv:
+function _ZN55sugerir121TEST_hay121VerticalYMarquePosicionSegura_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:  147:TEST(sugerir121TEST, hay121VerticalYMarquePosicionSegura){
+        1:  148:    banderitas b = banderitasPuestas121_verticalMarcada;
+        1:  148-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  149:    jugadas j = jugadasValidas121_vertical;
+        1:  149-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  150:    pos p = make_pair(3,1);
+       1*:  151:    ASSERT_FALSE(sugerirAutomatico121(t_121_vertical, b, j, p));
+        1:  151-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  151-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  151-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  151-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:  151-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:  151-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  151-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:  151-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:  151-block  8
+        1:  151-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:  151-block 10
+    $$$$$:  151-block 11
+call   28 never executed
+    $$$$$:  151-block 12
+    $$$$$:  151-block 13
+call   29 never executed
+    $$$$$:  151-block 14
+    $$$$$:  151-block 15
+call   30 never executed
+    $$$$$:  151-block 16
+    $$$$$:  151-block 17
+call   31 never executed
+       1*:  152:    ASSERT_EQ(p,pos(3,1));
+        1:  152-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  152-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  152-block  2
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+    %%%%%:  152-block  3
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+    %%%%%:  152-block  4
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+    %%%%%:  152-block  5
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  152-block  6
+call   19 never executed
+call   20 never executed
+        1:  152-block  7
+        1:  152-block  8
+call   21 returned 1
+branch 22 taken 1 (fallthrough)
+branch 23 taken 0
+    $$$$$:  152-block  9
+    $$$$$:  152-block 10
+    $$$$$:  152-block 11
+    $$$$$:  152-block 12
+call   24 never executed
+    $$$$$:  152-block 13
+    $$$$$:  152-block 14
+call   25 never executed
+    $$$$$:  152-block 15
+    $$$$$:  152-block 16
+call   26 never executed
+        1:  153:}
+        1:  153-block  0
+        1:  153-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:  153-block  2
+        1:  153-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:  153-block  4
+call    6 never executed
+    $$$$$:  153-block  5
+call    7 never executed
+------------------
+_ZN55sugerir121TEST_hay121VerticalYMarquePosicionSegura_TestC1Ev:
+function _ZN55sugerir121TEST_hay121VerticalYMarquePosicionSegura_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  147:TEST(sugerir121TEST, hay121VerticalYMarquePosicionSegura){
+        1:  147-block  0
+call    0 returned 1
+------------------
+        -:  154:
+        -:  155:
+        -:  156:
+        -:  157:// ┌───┬───┬───┬───┬───┐
+        -:  158:// │ * │ * │ 2 │ * │ 1 │
+        -:  159:// ├───┼───┼───┼───┼───┤
+        -:  160:// │ 2 │ 2 │ 2 │ 1 │ 1 │
+        -:  161:// ├───┼───┼───┼───┼───┤
+        -:  162:// │ 0 │ 0 │ 0 │ 0 │ 0 │
+        -:  163:// ├───┼───┼───┼───┼───┤
+        -:  164:// │ 1 │ 2 │ 1 │ 1 │ 0 │
+        -:  165:// ├───┼───┼───┼───┼───┤
+        -:  166:// │ * │ 2 │ * │ 1 │ 0 │
+        -:  167:// └───┴───┴───┴───┴───┘
+        -:  168:tablero t_121_horizontal = {
+        -:  169:        { cMINA,  cMINA,  cVACIA, cMINA, cVACIA },
+        -:  170:        { cVACIA, cVACIA, cVACIA, cVACIA,  cVACIA },
+        -:  171:        { cVACIA, cVACIA,  cVACIA, cVACIA, cVACIA },
+        -:  172:        { cVACIA, cVACIA, cVACIA, cVACIA, cVACIA },
+        -:  173:        { cMINA,  cVACIA, cMINA,  cVACIA, cVACIA },
+        -:  174:};
+        -:  175:jugadas jugadasValidas121_horizontal = {
+        -:  176:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:  177:        jugada(pos(1, 0), 2),jugada(pos(1, 1), 2),jugada(pos(1, 2), 2),jugada(pos(1, 3), 1),jugada(pos(1, 4), 1),
+        -:  178:        jugada(pos(2, 0), 0),jugada(pos(2, 1), 0),jugada(pos(2, 2), 0),jugada(pos(2, 3), 0),jugada(pos(2, 4), 0),
+        -:  179:        jugada(pos(3, 0), 1),jugada(pos(3, 1), 2),jugada(pos(3, 2), 1),jugada(pos(3, 3), 1),jugada(pos(3, 4), 0),
+        -:  180:        jugada(pos(4, 3), 1),jugada(pos(4, 4), 0),
+        -:  181:};
+        -:  182:banderitas banderitasPuestas121_horizontal = {
+        -:  183:        pos(0,0), pos(0,1), pos(0,3),
+        -:  184:        pos(2,3),
+        -:  185:        pos(4,0),pos(4,2)
+        -:  186:};
+        2:  187:TEST(sugerir121TEST, hay121HorizontalYNoMarquePosicionSegura){
+        1:  188:    banderitas b = banderitasPuestas121_horizontal;
+        1:  189:    jugadas j = jugadasValidas121_horizontal;
+        1:  190:    pos p = make_pair(3,1);
+       1*:  191:    ASSERT_TRUE(sugerirAutomatico121(t_121_horizontal, b, j, p));
+       1*:  192:    ASSERT_EQ(p,pos(4,1));
+        1:  193:}
+------------------
+_ZN59sugerir121TEST_hay121HorizontalYNoMarquePosicionSegura_Test8TestBodyEv:
+function _ZN59sugerir121TEST_hay121HorizontalYNoMarquePosicionSegura_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:  187:TEST(sugerir121TEST, hay121HorizontalYNoMarquePosicionSegura){
+        1:  188:    banderitas b = banderitasPuestas121_horizontal;
+        1:  188-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  189:    jugadas j = jugadasValidas121_horizontal;
+        1:  189-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  190:    pos p = make_pair(3,1);
+       1*:  191:    ASSERT_TRUE(sugerirAutomatico121(t_121_horizontal, b, j, p));
+        1:  191-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  191-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  191-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  191-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:  191-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:  191-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  191-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:  191-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:  191-block  8
+        1:  191-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:  191-block 10
+    $$$$$:  191-block 11
+call   28 never executed
+    $$$$$:  191-block 12
+    $$$$$:  191-block 13
+call   29 never executed
+    $$$$$:  191-block 14
+    $$$$$:  191-block 15
+call   30 never executed
+    $$$$$:  191-block 16
+    $$$$$:  191-block 17
+call   31 never executed
+       1*:  192:    ASSERT_EQ(p,pos(4,1));
+        1:  192-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  192-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  192-block  2
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+    %%%%%:  192-block  3
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+    %%%%%:  192-block  4
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+    %%%%%:  192-block  5
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  192-block  6
+call   19 never executed
+call   20 never executed
+        1:  192-block  7
+        1:  192-block  8
+call   21 returned 1
+branch 22 taken 1 (fallthrough)
+branch 23 taken 0
+    $$$$$:  192-block  9
+    $$$$$:  192-block 10
+    $$$$$:  192-block 11
+    $$$$$:  192-block 12
+call   24 never executed
+    $$$$$:  192-block 13
+    $$$$$:  192-block 14
+call   25 never executed
+    $$$$$:  192-block 15
+    $$$$$:  192-block 16
+call   26 never executed
+        1:  193:}
+        1:  193-block  0
+        1:  193-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:  193-block  2
+        1:  193-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:  193-block  4
+call    6 never executed
+    $$$$$:  193-block  5
+call    7 never executed
+------------------
+_ZN59sugerir121TEST_hay121HorizontalYNoMarquePosicionSegura_TestC1Ev:
+function _ZN59sugerir121TEST_hay121HorizontalYNoMarquePosicionSegura_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  187:TEST(sugerir121TEST, hay121HorizontalYNoMarquePosicionSegura){
+        1:  187-block  0
+call    0 returned 1
+------------------
+        -:  194:banderitas banderitasPuestas121_horizontalMarcada = {
+        -:  195:        pos(0,0), pos(0,1), pos(0,3),
+        -:  196:        pos(2,3),
+        -:  197:        pos(4,0),pos(4,1),pos(4,2)
+        -:  198:};
+        2:  199:TEST(sugerir121TEST, hay121HorizontalYMarquePosicionSegura){
+        1:  200:    banderitas b = banderitasPuestas121_horizontalMarcada;
+        1:  201:    jugadas j = jugadasValidas121_horizontal;
+        1:  202:    pos p = make_pair(3,1);
+       1*:  203:    ASSERT_FALSE(sugerirAutomatico121(t_121_horizontal, b, j, p));
+       1*:  204:    ASSERT_EQ(p,pos(3,1));
+        1:  205:}
+------------------
+_ZN57sugerir121TEST_hay121HorizontalYMarquePosicionSegura_Test8TestBodyEv:
+function _ZN57sugerir121TEST_hay121HorizontalYMarquePosicionSegura_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:  199:TEST(sugerir121TEST, hay121HorizontalYMarquePosicionSegura){
+        1:  200:    banderitas b = banderitasPuestas121_horizontalMarcada;
+        1:  200-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  201:    jugadas j = jugadasValidas121_horizontal;
+        1:  201-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  202:    pos p = make_pair(3,1);
+       1*:  203:    ASSERT_FALSE(sugerirAutomatico121(t_121_horizontal, b, j, p));
+        1:  203-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  203-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  203-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  203-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:  203-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:  203-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  203-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:  203-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:  203-block  8
+        1:  203-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:  203-block 10
+    $$$$$:  203-block 11
+call   28 never executed
+    $$$$$:  203-block 12
+    $$$$$:  203-block 13
+call   29 never executed
+    $$$$$:  203-block 14
+    $$$$$:  203-block 15
+call   30 never executed
+    $$$$$:  203-block 16
+    $$$$$:  203-block 17
+call   31 never executed
+       1*:  204:    ASSERT_EQ(p,pos(3,1));
+        1:  204-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  204-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  204-block  2
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+    %%%%%:  204-block  3
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+    %%%%%:  204-block  4
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+    %%%%%:  204-block  5
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  204-block  6
+call   19 never executed
+call   20 never executed
+        1:  204-block  7
+        1:  204-block  8
+call   21 returned 1
+branch 22 taken 1 (fallthrough)
+branch 23 taken 0
+    $$$$$:  204-block  9
+    $$$$$:  204-block 10
+    $$$$$:  204-block 11
+    $$$$$:  204-block 12
+call   24 never executed
+    $$$$$:  204-block 13
+    $$$$$:  204-block 14
+call   25 never executed
+    $$$$$:  204-block 15
+    $$$$$:  204-block 16
+call   26 never executed
+        1:  205:}
+        1:  205-block  0
+        1:  205-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:  205-block  2
+        1:  205-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:  205-block  4
+call    6 never executed
+    $$$$$:  205-block  5
+call    7 never executed
+------------------
+_ZN57sugerir121TEST_hay121HorizontalYMarquePosicionSegura_TestC1Ev:
+function _ZN57sugerir121TEST_hay121HorizontalYMarquePosicionSegura_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  199:TEST(sugerir121TEST, hay121HorizontalYMarquePosicionSegura){
+        1:  199-block  0
+call    0 returned 1
+------------------
+        -:  206:
+        -:  207:
+        -:  208:
+        -:  209:
+        -:  210:// ┌───┬───┬───┬───┬───┐
+        -:  211:// │ * │ * │ 2 │ * │ 1 │
+        -:  212:// ├───┼───┼───┼───┼───┤
+        -:  213:// │ 2 │ 2 │ 2 │ 1 │ 1 │
+        -:  214:// ├───┼───┼───┼───┼───┤
+        -:  215:// │ 0 │ 0 │ 0 │ 0 │ 0 │
+        -:  216:// ├───┼───┼───┼───┼───┤
+        -:  217:// │ 0 │ 1 │ 1 │ 1 │ 0 │
+        -:  218:// ├───┼───┼───┼───┼───┤
+        -:  219:// │ 0 │ 1 │ * │ 1 │ 0 │
+        -:  220:// └───┴───┴───┴───┴───┘
+        -:  221:tablero t_sin121 = {
+        -:  222:        { cMINA,  cMINA,  cVACIA, cMINA, cVACIA },
+        -:  223:        { cVACIA, cVACIA, cVACIA, cVACIA,  cVACIA },
+        -:  224:        { cVACIA, cVACIA,  cVACIA, cVACIA, cVACIA },
+        -:  225:        { cVACIA, cVACIA, cVACIA, cVACIA, cVACIA },
+        -:  226:        { cVACIA,  cVACIA, cMINA,  cVACIA, cVACIA },
+        -:  227:};
+        -:  228:jugadas jugadasValidasSin121 = {
+        -:  229:        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:  230:        jugada(pos(1, 0), 2),jugada(pos(1, 1), 2),jugada(pos(1, 2), 2),jugada(pos(1, 3), 1),jugada(pos(1, 4), 1),
+        -:  231:        jugada(pos(2, 0), 0),jugada(pos(2, 1), 0),jugada(pos(2, 2), 0),jugada(pos(2, 3), 0),jugada(pos(2, 4), 0),
+        -:  232:        jugada(pos(3, 0), 0),jugada(pos(3, 1), 1),jugada(pos(3, 2), 1),jugada(pos(3, 3), 1),jugada(pos(3, 4), 0),
+        -:  233:        jugada(pos(4, 0), 0),jugada(pos(4, 1), 1),jugada(pos(4, 3), 1),jugada(pos(4, 4), 0),
+        -:  234:};
+        -:  235:banderitas banderitasPuestasSin121 = {
+        -:  236:        pos(0,0), pos(0,1), pos(0,3),
+        -:  237:        pos(2,3),
+        -:  238:        pos(4,0),pos(4,2)
+        -:  239:};
+        2:  240:TEST(sugerir121TEST, noHay121){
+        1:  241:    banderitas b = banderitasPuestasSin121;
+        1:  242:    jugadas j = jugadasValidasSin121;
+        1:  243:    pos p = make_pair(1,1);
+       1*:  244:    ASSERT_FALSE(sugerirAutomatico121(t_sin121, b, j, p));
+       1*:  245:    ASSERT_EQ(p,pos(1,1));
+        1:  246:}
+------------------
+_ZN28sugerir121TEST_noHay121_Test8TestBodyEv:
+function _ZN28sugerir121TEST_noHay121_Test8TestBodyEv called 1 returned 100% blocks executed 35%
+        1:  240:TEST(sugerir121TEST, noHay121){
+        1:  241:    banderitas b = banderitasPuestasSin121;
+        1:  241-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  242:    jugadas j = jugadasValidasSin121;
+        1:  242-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  243:    pos p = make_pair(1,1);
+       1*:  244:    ASSERT_FALSE(sugerirAutomatico121(t_sin121, b, j, p));
+        1:  244-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  244-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  244-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  244-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:  244-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:  244-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  244-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:  244-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:  244-block  8
+        1:  244-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:  244-block 10
+    $$$$$:  244-block 11
+call   28 never executed
+    $$$$$:  244-block 12
+    $$$$$:  244-block 13
+call   29 never executed
+    $$$$$:  244-block 14
+    $$$$$:  244-block 15
+call   30 never executed
+    $$$$$:  244-block 16
+    $$$$$:  244-block 17
+call   31 never executed
+       1*:  245:    ASSERT_EQ(p,pos(1,1));
+        1:  245-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  245-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  245-block  2
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+    %%%%%:  245-block  3
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+    %%%%%:  245-block  4
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+    %%%%%:  245-block  5
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:  245-block  6
+call   19 never executed
+call   20 never executed
+        1:  245-block  7
+        1:  245-block  8
+call   21 returned 1
+branch 22 taken 1 (fallthrough)
+branch 23 taken 0
+    $$$$$:  245-block  9
+    $$$$$:  245-block 10
+    $$$$$:  245-block 11
+    $$$$$:  245-block 12
+call   24 never executed
+    $$$$$:  245-block 13
+    $$$$$:  245-block 14
+call   25 never executed
+    $$$$$:  245-block 15
+    $$$$$:  245-block 16
+call   26 never executed
+        1:  246:}
+        1:  246-block  0
+        1:  246-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:  246-block  2
+        1:  246-block  3
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    $$$$$:  246-block  4
+call    6 never executed
+    $$$$$:  246-block  5
+call    7 never executed
+------------------
+_ZN28sugerir121TEST_noHay121_TestC1Ev:
+function _ZN28sugerir121TEST_noHay121_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  240:TEST(sugerir121TEST, noHay121){
+        1:  240-block  0
+call    0 returned 1
+------------------

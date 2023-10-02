@@ -1,0 +1,294 @@
+        -:    0:Source:C:/Users/mdds2/OneDrive/Escritorio/UBA/Algo I/TPI/tpi-template-alumnos/template-alumnos/tests/ganoTEST.cpp
+        -:    0:Graph:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\tests\ganoTEST.gcno
+        -:    0:Data:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\tests\ganoTEST.gcda
+        -:    0:Runs:1
+        -:    1:// Tests para la función gano.
+        -:    2:// Ver el archovo README.md para ayuda
+        -:    3:
+        -:    4:
+        -:    5:#include "../ejercicios.h"
+        -:    6:#include "../auxiliares.h"
+        -:    7:#include "gtest/gtest.h"
+        -:    8:
+        -:    9:using namespace std;
+        -:   10:
+        -:   11:// ┌───┬───┬───┬───┬───┐
+        -:   12:// │ * │ * │ 2 │ 1 │ 1 │
+        -:   13:// ├───┼───┼───┼───┼───┤
+        -:   14:// │ 3 │ 3 │ 3 │ * │ 1 │
+        -:   15:// ├───┼───┼───┼───┼───┤
+        -:   16:// │ 1 │ * │ 2 │ 1 │ 1 │
+        -:   17:// ├───┼───┼───┼───┼───┤
+        -:   18:// │ 2 │ 3 │ 2 │ 1 │ 0 │
+        -:   19:// ├───┼───┼───┼───┼───┤
+        -:   20:// │ * │ 2 │ * │ 1 │ 0 │
+        -:   21:// └───┴───┴───┴───┴───┘
+        -:   22:
+        -:   23:tablero t_gano = {
+        -:   24:    { cMINA,  cMINA,  cVACIA, cVACIA, cVACIA },
+        -:   25:    { cVACIA, cVACIA, cVACIA, cMINA,  cVACIA },
+        -:   26:    { cVACIA, cMINA,  cVACIA, cVACIA, cVACIA },
+        -:   27:    { cVACIA, cVACIA, cVACIA, cVACIA, cVACIA },
+        -:   28:    { cMINA,  cVACIA, cMINA,  cVACIA, cVACIA },
+        -:   29:};
+        -:   30:jugadas jugadasValidas = {
+        -:   31:    jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        -:   32:    jugada(pos(1, 0), 3),jugada(pos(1, 1), 3),jugada(pos(1, 2), 3),jugada(pos(1, 4), 1),
+        -:   33:    jugada(pos(2, 0), 1),jugada(pos(2, 2), 2),jugada(pos(2, 3), 1),jugada(pos(2, 4), 1),
+        -:   34:    jugada(pos(3, 0), 2),jugada(pos(3, 1), 3),jugada(pos(3, 2), 2),jugada(pos(3, 3), 1),jugada(pos(3, 4), 0),
+        -:   35:    jugada(pos(4, 1), 2),jugada(pos(4, 3), 1),jugada(pos(4, 4), 0),
+        -:   36:};
+        2:   37:TEST(ganoTEST, todaviaNoGano){
+        1:   38:    jugadas j = jugadasValidas;
+       1*:   39:    ASSERT_FALSE(gano(t_gano, j));
+        1:   40:}
+------------------
+_ZN27ganoTEST_todaviaNoGano_Test8TestBodyEv:
+function _ZN27ganoTEST_todaviaNoGano_Test8TestBodyEv called 1 returned 100% blocks executed 37%
+        1:   37:TEST(ganoTEST, todaviaNoGano){
+        1:   38:    jugadas j = jugadasValidas;
+        1:   38-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   39:    ASSERT_FALSE(gano(t_gano, j));
+        1:   39-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   39-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   39-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   39-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   39-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   39-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   39-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   39-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   39-block  8
+        1:   39-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   39-block 10
+    $$$$$:   39-block 11
+call   28 never executed
+    $$$$$:   39-block 12
+    $$$$$:   39-block 13
+call   29 never executed
+    $$$$$:   39-block 14
+    $$$$$:   39-block 15
+call   30 never executed
+    $$$$$:   39-block 16
+    $$$$$:   39-block 17
+call   31 never executed
+        1:   40:}
+        1:   40-block  0
+        1:   40-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+    $$$$$:   40-block  2
+call    3 never executed
+------------------
+_ZN27ganoTEST_todaviaNoGano_TestC1Ev:
+function _ZN27ganoTEST_todaviaNoGano_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   37:TEST(ganoTEST, todaviaNoGano){
+        1:   37-block  0
+call    0 returned 1
+------------------
+        -:   41:
+        -:   42:jugadas jugadasValidas1 = {
+        -:   43:        jugada(pos(0, 2), 2),jugada(pos(0, 3), 1),jugada(pos(0, 4), 1),
+        -:   44:        jugada(pos(1, 0), 3),jugada(pos(1, 1), 3),jugada(pos(1, 2), 3),jugada(pos(1, 4), 1),
+        -:   45:        jugada(pos(2, 0), 1),jugada(pos(2, 2), 2),jugada(pos(2, 3), 1),jugada(pos(2, 4), 1),
+        -:   46:        jugada(pos(3, 0), 2),jugada(pos(3, 1), 3),jugada(pos(3, 2), 2),jugada(pos(3, 3), 1),jugada(pos(3, 4), 0),
+        -:   47:        jugada(pos(4, 1), 2),jugada(pos(4, 3), 1),jugada(pos(4, 4), 0),
+        -:   48:};
+        2:   49:TEST(ganoTEST, yaGano){
+        1:   50:    jugadas j = jugadasValidas1;
+       1*:   51:    ASSERT_TRUE(gano(t_gano, j));
+        1:   52:}
+------------------
+_ZN20ganoTEST_yaGano_Test8TestBodyEv:
+function _ZN20ganoTEST_yaGano_Test8TestBodyEv called 1 returned 100% blocks executed 37%
+        1:   49:TEST(ganoTEST, yaGano){
+        1:   50:    jugadas j = jugadasValidas1;
+        1:   50-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   51:    ASSERT_TRUE(gano(t_gano, j));
+        1:   51-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   51-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   51-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   51-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   51-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   51-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   51-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   51-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   51-block  8
+        1:   51-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   51-block 10
+    $$$$$:   51-block 11
+call   28 never executed
+    $$$$$:   51-block 12
+    $$$$$:   51-block 13
+call   29 never executed
+    $$$$$:   51-block 14
+    $$$$$:   51-block 15
+call   30 never executed
+    $$$$$:   51-block 16
+    $$$$$:   51-block 17
+call   31 never executed
+        1:   52:}
+        1:   52-block  0
+        1:   52-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+    $$$$$:   52-block  2
+call    3 never executed
+------------------
+_ZN20ganoTEST_yaGano_TestC1Ev:
+function _ZN20ganoTEST_yaGano_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   49:TEST(ganoTEST, yaGano){
+        1:   49-block  0
+call    0 returned 1
+------------------
+        -:   53:
+        -:   54:jugadas jugadasValidas2 = {
+        -:   55:        jugada(pos(0, 1), 2),jugada(pos(0, 3), 1),jugada(pos(0, 4), 1),
+        -:   56:        jugada(pos(1, 0), 3),jugada(pos(1, 1), 3),jugada(pos(1, 2), 3),jugada(pos(1, 4), 1),
+        -:   57:        jugada(pos(2, 0), 1),jugada(pos(2, 2), 2),jugada(pos(2, 3), 1),jugada(pos(2, 4), 1),
+        -:   58:        jugada(pos(3, 0), 2),jugada(pos(3, 1), 3),jugada(pos(3, 2), 2),jugada(pos(3, 3), 1),jugada(pos(3, 4), 0),
+        -:   59:        jugada(pos(4, 1), 2),jugada(pos(4, 3), 1),jugada(pos(4, 4), 0),
+        -:   60:};
+        2:   61:TEST(ganoTEST, tocoUnaMinaYPerdio){
+        1:   62:    jugadas j = jugadasValidas2;
+       1*:   63:    ASSERT_FALSE(gano(t_gano, j));
+        1:   64:}
+------------------
+_ZN32ganoTEST_tocoUnaMinaYPerdio_Test8TestBodyEv:
+function _ZN32ganoTEST_tocoUnaMinaYPerdio_Test8TestBodyEv called 1 returned 100% blocks executed 37%
+        1:   61:TEST(ganoTEST, tocoUnaMinaYPerdio){
+        1:   62:    jugadas j = jugadasValidas2;
+        1:   62-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   63:    ASSERT_FALSE(gano(t_gano, j));
+        1:   63-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   63-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   63-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   63-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:   63-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:   63-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   63-block  6
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   63-block  7
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   63-block  8
+        1:   63-block  9
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0
+    $$$$$:   63-block 10
+    $$$$$:   63-block 11
+call   28 never executed
+    $$$$$:   63-block 12
+    $$$$$:   63-block 13
+call   29 never executed
+    $$$$$:   63-block 14
+    $$$$$:   63-block 15
+call   30 never executed
+    $$$$$:   63-block 16
+    $$$$$:   63-block 17
+call   31 never executed
+        1:   64:}
+        1:   64-block  0
+        1:   64-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+    $$$$$:   64-block  2
+call    3 never executed
+------------------
+_ZN32ganoTEST_tocoUnaMinaYPerdio_TestC1Ev:
+function _ZN32ganoTEST_tocoUnaMinaYPerdio_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   61:TEST(ganoTEST, tocoUnaMinaYPerdio){
+        1:   61-block  0
+call    0 returned 1
+------------------
+        -:   65:

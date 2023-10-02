@@ -1,0 +1,1036 @@
+        -:    0:Source:C:/Users/mdds2/OneDrive/Escritorio/UBA/Algo I/TPI/tpi-template-alumnos/template-alumnos/auxiliares.cpp
+        -:    0:Graph:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\auxiliares.gcno
+        -:    0:Data:C:\Users\mdds2\OneDrive\Escritorio\UBA\Algo I\TPI\tpi-template-alumnos\template-alumnos\cmake-build-debug\CMakeFiles\tpi.dir\auxiliares.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Este archivo contiene las definiciones de las funciones auxiliares
+        -:    3:// que ustedes necesiten implementar. Tienen que coincidir con las 
+        -:    4:// declaraciones de auxiliares.h
+        -:    5://
+        -:    6:
+        -:    7:#include <stdio.h>
+        -:    8:#include <iostream>
+        -:    9:#include <utility>
+        -:   10:
+        -:   11:
+        -:   12:#include "definiciones.h"
+        -:   13:#include "auxiliares.h"
+        -:   14:#include "ejercicios.h"
+        -:   15:
+        -:   16:using namespace std;
+        -:   17:
+function _Z16coordenadaValidaii called 7000 returned 100% blocks executed 100%
+     7000:   18:bool coordenadaValida(int c, int n){
+     7000:   19:    return ((0<=c) && (c<n));
+     7000:   19-block  0
+branch  0 taken 6526 (fallthrough)
+branch  1 taken 474
+     6526:   19-block  1
+branch  2 taken 6171 (fallthrough)
+branch  3 taken 355
+     6171:   19-block  2
+      829:   19-block  3
+     7000:   19-block  4
+        -:   20:}
+        -:   21:
+function _Z17esAdyacenteValidaSt4pairIiiEiiRSt6vectorIS1_IbSaIbEESaIS3_EE called 2601 returned 100% blocks executed 100%
+     2601:   22:bool esAdyacenteValida(pos p, int i, int k, tablero &t){
+     2601:   23:    bool res = false;
+     2601:   24:    if (coordenadaValida(p.first + i, t.size()) && coordenadaValida(p.second + k, t[0].size()) && (i!=0 || k!=0)){
+     2601:   24-block  0
+call    0 returned 2601
+call    1 returned 2601
+branch  2 taken 2355 (fallthrough)
+branch  3 taken 246
+     2355:   24-block  1
+call    4 returned 2355
+call    5 returned 2355
+call    6 returned 2355
+branch  7 taken 1950 (fallthrough)
+branch  8 taken 405
+     1950:   24-block  2
+branch  9 taken 714 (fallthrough)
+branch 10 taken 1236
+      714:   24-block  3
+branch 11 taken 426 (fallthrough)
+branch 12 taken 288
+     1662:   24-block  4
+      939:   24-block  5
+     2601:   24-block  6
+branch 13 taken 1662 (fallthrough)
+branch 14 taken 939
+     1662:   25:        res = true;
+     1662:   25-block  0
+        -:   26:    }
+     2601:   27:    return res;
+     2601:   27-block  0
+        -:   28:}
+        -:   29:
+        -:   30:
+        -:   31:// ##############################################################################################################################################################
+        -:   32:
+        -:   33:
+function _Z13esPermutacionRSt6vectorISt4pairIiiESaIS1_EES4_ called 2 returned 100% blocks executed 91%
+        2:   34:bool esPermutacion(banderitas &b1, banderitas &b2){
+        2:   35:    bool mismoTamano = (b1.size() == b2.size());
+        2:   35-block  0
+call    0 returned 2
+call    1 returned 2
+        2:   36:    bool banderitasAparecenMismasVeces = true;
+       12:   37:    for(int i=0;i<b1.size();i++){
+       10:   37-block  0
+       12:   37-block  1
+call    0 returned 12
+branch  1 taken 10
+branch  2 taken 2 (fallthrough)
+       10:   38:        int apariciones_b1 = 1;
+       10:   39:        int apariciones_b2 = 0;
+       60:   40:        for(int k = 0; k < b2.size(); k++){
+       10:   40-block  0
+       50:   40-block  1
+       60:   40-block  2
+call    0 returned 60
+branch  1 taken 50
+branch  2 taken 10 (fallthrough)
+       50:   41:            if(b2[k] == b1[i]){
+       50:   41-block  0
+call    0 returned 50
+call    1 returned 50
+call    2 returned 50
+branch  3 taken 10 (fallthrough)
+branch  4 taken 40
+       10:   42:                apariciones_b2++;
+       10:   42-block  0
+        -:   43:            }
+        -:   44:        }
+       10:   45:        if(apariciones_b1 != apariciones_b2){
+       10:   45-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 10
+    #####:   46:            banderitasAparecenMismasVeces = false;
+    %%%%%:   46-block  0
+        -:   47:        }
+        -:   48:    }
+       2*:   49:    bool permutacion = mismoTamano && banderitasAparecenMismasVeces;
+        2:   49-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 0
+        2:   49-block  1
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0
+        2:   49-block  2
+    %%%%%:   49-block  3
+        2:   50:    return permutacion;
+        2:   50-block  0
+        -:   51:}
+        -:   52:
+function _Z15plantaBanderitaSt4pairIiiERSt6vectorIS0_SaIS0_EES4_ called 3 returned 100% blocks executed 96%
+        3:   53:bool plantaBanderita(pos p_plantar, banderitas &b, banderitas &b0){
+        3:   54:    bool agregaPosicion = esBanderita(p_plantar,b);
+        3:   54-block  0
+call    0 returned 3
+        3:   55:    bool todaBanderaDeB0EstaEnB = true;
+       18:   56:    for(int i=0;i<b0.size();i++){
+       15:   56-block  0
+       18:   56-block  1
+call    0 returned 18
+branch  1 taken 15
+branch  2 taken 3 (fallthrough)
+       15:   57:        int apariciones_b0 = 1;
+       15:   58:        int apariciones_b = 0;
+      100:   59:        for(int k=0;k<b.size();k++){
+       15:   59-block  0
+       85:   59-block  1
+      100:   59-block  2
+call    0 returned 100
+branch  1 taken 85
+branch  2 taken 15 (fallthrough)
+       85:   60:            if(b0[i] == b[i]){
+       85:   60-block  0
+call    0 returned 85
+call    1 returned 85
+call    2 returned 85
+branch  3 taken 85 (fallthrough)
+branch  4 taken 0
+       85:   61:                apariciones_b++;
+       85:   61-block  0
+        -:   62:            }
+        -:   63:        }
+       15:   64:        if(apariciones_b0 > apariciones_b){
+       15:   64-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 15
+    #####:   65:            todaBanderaDeB0EstaEnB = false;
+    %%%%%:   65-block  0
+        -:   66:        }
+        -:   67:    }
+        3:   68:    bool res = (b.size() == b0.size()+1) && agregaPosicion && todaBanderaDeB0EstaEnB;
+        3:   68-block  0
+call    0 returned 3
+call    1 returned 3
+branch  2 taken 2 (fallthrough)
+branch  3 taken 1
+        2:   68-block  1
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0
+        2:   68-block  2
+branch  6 taken 2 (fallthrough)
+branch  7 taken 0
+        2:   68-block  3
+        1:   68-block  4
+        3:   69:    return res;
+        3:   69-block  0
+        -:   70:}
+        -:   71:
+function _Z13sacaBanderitaSt4pairIiiERSt6vectorIS0_SaIS0_EES4_ called 2 returned 100% blocks executed 86%
+        2:   72:bool sacaBanderita(pos p_sacar, banderitas &b, banderitas &b0){
+        2:   73:    bool eliminaPosicion = true;
+       14:   74:    for(int i = 0;i<b0.size();i++){
+        2:   74-block  0
+       12:   74-block  1
+       14:   74-block  2
+call    0 returned 14
+branch  1 taken 12
+branch  2 taken 2 (fallthrough)
+      12*:   75:        if(p_sacar!=b0[i] && !esBanderita(b0[i],b)){
+       12:   75-block  0
+call    0 returned 12
+call    1 returned 12
+branch  2 taken 10 (fallthrough)
+branch  3 taken 2
+       10:   75-block  1
+call    4 returned 10
+call    5 returned 10
+branch  6 taken 0 (fallthrough)
+branch  7 taken 10
+    %%%%%:   75-block  2
+       12:   75-block  3
+       12:   75-block  4
+branch  8 taken 0 (fallthrough)
+branch  9 taken 12
+    #####:   76:            eliminaPosicion = false;
+    %%%%%:   76-block  0
+        -:   77:        }
+        -:   78:    }
+       2*:   79:    bool res = (b.size() == b0.size()-1) && eliminaPosicion;
+        2:   79-block  0
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0
+        2:   79-block  1
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0
+        2:   79-block  2
+    %%%%%:   79-block  3
+        2:   80:    return res;
+        2:   80-block  0
+        -:   81:}
+        -:   82:
+        -:   83:
+        -:   84:// ##############################################################################################################################################################
+        -:   85:
+function _Z17hayMinaEnPosicionSt4pairIiiERSt6vectorIS1_IbSaIbEESaIS3_EE called 28 returned 100% blocks executed 100%
+       28:   86:bool hayMinaEnPosicion(pos p, tablero &t){
+       28:   87:    bool hayMina = false;
+       28:   88:    if(t[p.first][p.second]){
+       28:   88-block  0
+call    0 returned 28
+call    1 returned 28
+call    2 returned 28
+branch  3 taken 12 (fallthrough)
+branch  4 taken 16
+       12:   89:        hayMina = true;
+       12:   89-block  0
+        -:   90:    }
+       28:   91:    return hayMina;
+       28:   91-block  0
+        -:   92:}
+        -:   93:
+function _Z12juegoPerdidoRSt6vectorIS_IbSaIbEESaIS1_EERS_ISt4pairIS5_IiiEiESaIS7_EE called 4 returned 100% blocks executed 100%
+        4:   94:bool juegoPerdido(tablero &t, jugadas &j){
+        4:   95:    bool perdio=false;
+       32:   96:    for(int i=0;i<j.size();i++){ // Itera en el peor caso m veces, con m = j.size().
+        4:   96-block  0
+       28:   96-block  1
+       32:   96-block  2
+call    0 returned 32
+branch  1 taken 28
+branch  2 taken 4 (fallthrough)
+       28:   97:        if(hayMinaEnPosicion(j[i].first,t)){ // Cada comparación y acceso a la secuencia tiene tiempo constante O(1)
+       28:   97-block  0
+call    0 returned 28
+call    1 returned 28
+branch  2 taken 12 (fallthrough)
+branch  3 taken 16
+       12:   98:            perdio = true;
+       12:   98-block  0
+        -:   99:        }
+        -:  100:    }
+        4:  101:    return perdio;
+        4:  101-block  0
+        -:  102:}
+        -:  103:
+        -:  104:
+        -:  105:// ##############################################################################################################################################################
+        -:  106:
+        -:  107:
+function _Z14posicionValidaSt4pairIiiEi called 1058 returned 100% blocks executed 100%
+     1058:  108:bool posicionValida(pos p, int n){
+     1058:  109:    bool res = (coordenadaValida(p.first,n) && coordenadaValida(p.second,n));
+     1058:  109-block  0
+call    0 returned 1058
+branch  1 taken 986 (fallthrough)
+branch  2 taken 72
+      986:  109-block  1
+call    3 returned 986
+branch  4 taken 880 (fallthrough)
+branch  5 taken 106
+      880:  109-block  2
+      178:  109-block  3
+     1058:  110:    return res;
+     1058:  110-block  0
+        -:  111:}
+        -:  112:
+function _Z9fueJugadaSt4pairIiiERSt6vectorIS_IS0_iESaIS2_EE called 880 returned 100% blocks executed 100%
+      880:  113:bool fueJugada(pos p, jugadas &j){
+        -:  114:    // Complejidad de peor caso es O(m) con m = j.size(), ya que en peor caso itera en
+        -:  115:    // toda la secuencia j buscando si j[i] == p.
+      880:  116:    bool res = false;
+    14855:  117:    for(int i = 0; i<j.size(); i++){
+      880:  117-block  0
+    13975:  117-block  1
+    14855:  117-block  2
+call    0 returned 14855
+branch  1 taken 13975
+branch  2 taken 880 (fallthrough)
+    13975:  118:        if((j[i]).first == p){
+    13975:  118-block  0
+call    0 returned 13975
+call    1 returned 13975
+branch  2 taken 616 (fallthrough)
+branch  3 taken 13359
+      616:  119:            res = true;
+      616:  119-block  0
+        -:  120:        }
+        -:  121:    }
+      880:  122:    return res;
+      880:  122-block  0
+        -:  123:}
+        -:  124:
+function _Z11juegoGanadoRSt6vectorIS_IbSaIbEESaIS1_EERS_ISt4pairIS5_IiiEiESaIS7_EE called 3 returned 100% blocks executed 89%
+        3:  125:bool juegoGanado(tablero &t, jugadas &j){
+        3:  126:    bool res = true;
+       18:  127:    for(int i = 0; i<t.size(); i++){ // A partir de acá llamaremos n = t.size(). Este loop itera n veces en peor caso.
+        3:  127-block  0
+       15:  127-block  1
+       18:  127-block  2
+call    0 returned 18
+branch  1 taken 15
+branch  2 taken 3 (fallthrough)
+       90:  128:        for(int k = 0; k<t.size(); k++){ // Este loop itera n veces por iteración en peor caso del loop anterior.
+       15:  128-block  0
+       75:  128-block  1
+       90:  128-block  2
+call    0 returned 90
+branch  1 taken 75
+branch  2 taken 15 (fallthrough)
+       75:  129:            pos p = make_pair(i,k);
+       75:  129-block  0
+call    0 returned 75
+branch  1 taken 75 (fallthrough)
+branch  2 taken 0 (throw)
+      150:  130:            if(posicionValida(p,t.size()) &&
+       75:  130-block  0
+call    0 returned 75
+call    1 returned 75
+branch  2 taken 75 (fallthrough)
+branch  3 taken 0
+        3:  130-block  1
+       72:  130-block  2
+      148:  131:            ((!t[i][k] && !fueJugada(p, j)) || // Caso en el que todavía tiene posiciones por jugar.
+       75:  131-block  0
+call    0 returned 75
+call    1 returned 75
+branch  2 taken 75 (fallthrough)
+branch  3 taken 0 (throw)
+       75:  131-block  1
+call    4 returned 75
+branch  5 taken 57 (fallthrough)
+branch  6 taken 18
+       57:  131-block  2
+call    7 returned 57
+branch  8 taken 57 (fallthrough)
+branch  9 taken 0 (throw)
+       57:  131-block  3
+branch 10 taken 55 (fallthrough)
+branch 11 taken 2
+branch 12 taken 18 (fallthrough)
+branch 13 taken 55
+    $$$$$:  131-block  4
+      166:  132:            (t[i][k] && fueJugada(p, j))) // Caso en el que toca una mina.
+       73:  132-block  0
+call    0 returned 73
+call    1 returned 73
+branch  2 taken 73 (fallthrough)
+branch  3 taken 0 (throw)
+       73:  132-block  1
+call    4 returned 73
+       18:  132-block  2
+call    5 returned 18
+branch  6 taken 18 (fallthrough)
+branch  7 taken 0 (throw)
+       18:  132-block  3
+branch  8 taken 1 (fallthrough)
+branch  9 taken 17
+       75:  132-block  4
+branch 10 taken 3 (fallthrough)
+branch 11 taken 72
+    $$$$$:  132-block  5
+        -:  133:            ){
+        3:  134:                res = false; // En la guarda y en esta línea, solo hace comparaciones, que consideramos operaciones de tiempo O(1)
+        3:  134-block  0
+        -:  135:            }
+        -:  136:        } // Este loop tiene complejidad O(n)
+        -:  137:    } // Este loop tiene complejidad O(n*n) = O(n^2), puesto que recorre n veces en el peor caso la secuencia por cada iteración del anterior loop, el cual también itera n veces en el peor caso.
+        3:  138:    return res;
+        3:  138-block  0
+        3:  138-block  1
+        -:  139:}
+        -:  140:
+        -:  141:
+        -:  142:// ##############################################################################################################################################################
+        -:  143:
+        -:  144:
+function _Z22esPermutacionDeJugadasRSt6vectorISt4pairIS0_IiiEiESaIS2_EES5_ called 5 returned 100% blocks executed 91%
+        5:  145:bool esPermutacionDeJugadas(jugadas &j1, jugadas &j2){
+        5:  146:    bool mismoTamano = (j1.size() == j2.size());
+        5:  146-block  0
+call    0 returned 5
+call    1 returned 5
+        5:  147:    bool jugadasAparecenMismasVeces = true;
+       83:  148:    for(int i=0;i<j1.size();i++){
+       78:  148-block  0
+       83:  148-block  1
+call    0 returned 83
+branch  1 taken 78
+branch  2 taken 5 (fallthrough)
+       78:  149:        int apariciones_j1 = 1;
+       78:  150:        int apariciones_j2 = 0;
+     1554:  151:        for(int k = 0; k < j2.size(); k++){
+       78:  151-block  0
+     1476:  151-block  1
+     1554:  151-block  2
+call    0 returned 1554
+branch  1 taken 1476
+branch  2 taken 78 (fallthrough)
+     1476:  152:            if(j1[i] == j2[k]){
+     1476:  152-block  0
+call    0 returned 1476
+call    1 returned 1476
+call    2 returned 1476
+branch  3 taken 78 (fallthrough)
+branch  4 taken 1398
+       78:  153:                apariciones_j2++;
+       78:  153-block  0
+        -:  154:            }
+        -:  155:        }
+       78:  156:        if(apariciones_j1 != apariciones_j2){
+       78:  156-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 78
+    #####:  157:            jugadasAparecenMismasVeces = false;
+    %%%%%:  157-block  0
+        -:  158:        }
+        -:  159:    }
+       5*:  160:    bool permutacion = mismoTamano && jugadasAparecenMismasVeces;
+        5:  160-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 0
+        5:  160-block  1
+branch  2 taken 5 (fallthrough)
+branch  3 taken 0
+        5:  160-block  2
+    %%%%%:  160-block  3
+        5:  161:    return permutacion;
+        5:  161-block  0
+        -:  162:}
+        -:  163:
+function _Z15mantieneJugadasRSt6vectorISt4pairIS0_IiiEiESaIS2_EES5_ called 5 returned 100% blocks executed 94%
+        5:  164:bool mantieneJugadas(jugadas &j0, jugadas &js){
+        5:  165:    bool mantiene = true;
+       83:  166:    for(int i = 0; i<j0.size(); i++){
+        5:  166-block  0
+       78:  166-block  1
+       83:  166-block  2
+call    0 returned 83
+branch  1 taken 78
+branch  2 taken 5 (fallthrough)
+       78:  167:        int apariciones_j0_en_js = 0;
+     1554:  168:        for(int k = 0; k<js.size(); k++){
+       78:  168-block  0
+     1476:  168-block  1
+     1554:  168-block  2
+call    0 returned 1554
+branch  1 taken 1476
+branch  2 taken 78 (fallthrough)
+     1476:  169:            if(js[k] == j0[i]){
+     1476:  169-block  0
+call    0 returned 1476
+call    1 returned 1476
+call    2 returned 1476
+branch  3 taken 78 (fallthrough)
+branch  4 taken 1398
+       78:  170:                apariciones_j0_en_js++;
+       78:  170-block  0
+        -:  171:            }
+        -:  172:        }
+       78:  173:        if(apariciones_j0_en_js == 0){
+       78:  173-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 78
+    #####:  174:            mantiene = false;
+    %%%%%:  174-block  0
+        -:  175:            //cout << j0[i].first.first << "," << j0[i].first.second;
+        -:  176:        }
+        -:  177:    }
+        5:  178:    return mantiene;
+        5:  178-block  0
+        -:  179:}
+        -:  180:
+function _Z18jugadasNoRepetidasRSt6vectorISt4pairIS0_IiiEiESaIS2_EE called 5 returned 100% blocks executed 94%
+        5:  181:bool jugadasNoRepetidas(jugadas &j){
+        5:  182:    bool noRepite = true;
+       83:  183:    for(int i = 0; i<j.size(); i++) {
+        5:  183-block  0
+       78:  183-block  1
+       83:  183-block  2
+call    0 returned 83
+branch  1 taken 78
+branch  2 taken 5 (fallthrough)
+       78:  184:        int apariciones = 0;
+     1554:  185:        for(int k = 0; k<j.size(); k++){
+       78:  185-block  0
+     1476:  185-block  1
+     1554:  185-block  2
+call    0 returned 1554
+branch  1 taken 1476
+branch  2 taken 78 (fallthrough)
+     1476:  186:            if(j[i] == j[k]){
+     1476:  186-block  0
+call    0 returned 1476
+call    1 returned 1476
+call    2 returned 1476
+branch  3 taken 78 (fallthrough)
+branch  4 taken 1398
+       78:  187:                apariciones++;
+       78:  187-block  0
+        -:  188:            }
+        -:  189:        }
+       78:  190:        if (apariciones > 1) {
+       78:  190-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 78
+    #####:  191:            noRepite = false;
+    %%%%%:  191-block  0
+        -:  192:        }
+        -:  193:    }
+        5:  194:    return noRepite;
+        5:  194-block  0
+        -:  195:}
+        -:  196:
+function _Z19incluyeJugadaActualRSt6vectorIS_IbSaIbEESaIS1_EERS_ISt4pairIS5_IiiEiESaIS7_EES6_ called 5 returned 100% blocks executed 100%
+        5:  197:bool incluyeJugadaActual(tablero &t, jugadas &j, pos p){
+        5:  198:    bool incluye = false;
+       83:  199:    for(int i = 0; i<j.size(); i++){
+        5:  199-block  0
+       78:  199-block  1
+       83:  199-block  2
+call    0 returned 83
+branch  1 taken 78
+branch  2 taken 5 (fallthrough)
+       78:  200:        jugada c = jugada(p,minasAdyacentes(t,p));
+       78:  200-block  0
+call    0 returned 78
+branch  1 taken 78 (fallthrough)
+branch  2 taken 0 (throw)
+       78:  200-block  1
+call    3 returned 78
+       78:  201:        if(c == j[i]){
+call    0 returned 78
+call    1 returned 78
+branch  2 taken 5 (fallthrough)
+branch  3 taken 73
+        5:  202:            incluye = true;
+        5:  202-block  0
+        -:  203:        }
+        -:  204:    }
+        5:  205:    return incluye;
+        5:  205-block  0
+        5:  205-block  1
+        -:  206:}
+        -:  207:
+        -:  208:/*
+        -:  209:bool descubreSoloPosicionJugada(pos p, jugadas &j, jugadas &j0, tablero &t){
+        -:  210:    bool res = (j.size() == j0.size() + 1) && ((t[p.first][p.second]==true) || (minasAdyacentes(t,p) > 0));
+        -:  211:    return res;
+        -:  212:}
+        -:  213:
+        -:  214:bool hayCaminoLibre(pos posInicial, pos posFinal, jugadas &j0, banderitas &b, tablero &t){
+        -:  215:    shdfatdahdhajtjdh
+        -:  216:}
+        -:  217:
+        -:  218:bool esDescubiertaAuto(pos q, pos p, jugadas &j, jugadas &j0, banderitas &b, tablero &t){
+        -:  219:    bool res = posicionValida(q,t.size()) && hayCaminoLibre(p,q,j0,b,t);
+        -:  220:    return res;
+        -:  221:}
+        -:  222:
+        -:  223:bool incluyeDescubiertasAutomaticamente(pos p, jugadas &j, jugadas &j0, banderitas &b, tablero &t){
+        -:  224:    hskhfdskhafdsahk
+        -:  225:}
+        -:  226:
+        -:  227:bool sonPosicionesAdyacentes(pos p, pos q){
+        -:  228:    bool res = (p!=q) && (abs(p.first - q.first) <= 1) && (abs(p.second - q.second) <= 1);
+        -:  229:    return res;
+        -:  230:}
+        -:  231:
+        -:  232:int descubiertasAutoDesde(pos p, jugadas &j0, jugadas &j, banderitas &b, tablero &t){
+        -:  233:    int suma = 0;
+        -:  234:    for(int i = 0; i<t.size(); i++){
+        -:  235:        int subsuma = 0;
+        -:  236:        for(int k = 0; k<t.size(); k++){
+        -:  237:            pos temp = pos(i,k);
+        -:  238:            if(esDescubiertaAuto(temp,p,j,j0,b,t)){
+        -:  239:                subsuma++;
+        -:  240:            }
+        -:  241:        }
+        -:  242:        suma = suma + subsuma;
+        -:  243:    }
+        -:  244:    return suma;
+        -:  245:}
+        -:  246:
+        -:  247:bool descubreMultiplesPosiciones(pos p, jugadas &j, jugadas &j0, banderitas &b, tablero &t){
+        -:  248:    bool res =
+        -:  249:            !(t[p.first][p.second] == true) && (minasAdyacentes(t,p) == 0) &&
+        -:  250:            incluyeDescubiertasAutomaticamente(p,j,j0,b,t) &&
+        -:  251:            (j.size() == j0.size() + 1 + descubiertasAutoDesde(p,j0,j,b,t));
+        -:  252:    return res;
+        -:  253:}
+        -:  254:
+        -:  255:bool soloAgregaPosicionesDescubiertas(pos p, jugadas &j, jugadas &j0, banderitas &b, tablero &t){
+        -:  256:    bool res = descubreSoloPosicionJugada(p,j,j0,t) || descubreMultiplesPosiciones(p,j,j0,b,t);
+        -:  257:    return res;
+        -:  258:}
+        -:  259:*/
+        -:  260:// ##############################################################################################################################################################
+        -:  261:
+        -:  262:
+function _Z11esBanderitaSt4pairIiiERSt6vectorIS0_SaIS0_EE called 258 returned 100% blocks executed 100%
+      258:  263:bool esBanderita(pos p, banderitas &b){
+        -:  264:    // Complejidad de peor caso de orden O(g)
+      258:  265:    bool bandera = false;
+     1325:  266:    for(int i = 0; i<b.size(); i++){ // Recorre toda la secuencia de g elementos, con g = b.size().
+      258:  266-block  0
+     1067:  266-block  1
+     1325:  266-block  2
+call    0 returned 1325
+branch  1 taken 1067
+branch  2 taken 258 (fallthrough)
+     1067:  267:        if(b[i] == p){
+     1067:  267-block  0
+call    0 returned 1067
+call    1 returned 1067
+branch  2 taken 106 (fallthrough)
+branch  3 taken 961
+      106:  268:            bandera = true;
+      106:  268-block  0
+        -:  269:        }
+        -:  270:    }
+      258:  271:    return bandera;
+      258:  271-block  0
+        -:  272:}
+        -:  273:
+function _Z31esPosicionSinJugarYSinBanderitaSt4pairIiiERSt6vectorIS_IS0_iESaIS2_EERS1_IS0_SaIS0_EERS1_IS1_IbSaIbEESaISA_EE called 983 returned 100% blocks executed 100%
+      983:  274:bool esPosicionSinJugarYSinBanderita(pos p, jugadas &j, banderitas &b, tablero &t){
+        -:  275:    //  Complejidad de peor caso del orden O(g+m) pues efectúa una comparación de orden O(g) y una de orden O(m)
+      983:  276:    bool esPosicion = false;
+        -:  277:    // Complejidad de peor caso de posicionValida es del orden O(1).
+        -:  278:    // Complejidad de peor caso de esBanderita es del orden O(g) con g = b.size()
+        -:  279:    // Complejidad de peor caso de fueJugada es del orden O(m) con m = j.size()
+      983:  280:    if(posicionValida(p,t.size()) &&
+      983:  280-block  0
+call    0 returned 983
+call    1 returned 983
+      983:  281:    !fueJugada(p,j) && !esBanderita(p,b)){ // O(m) (fueJugada) + O(g) (esBanderita)
+branch  0 taken 805 (fallthrough)
+branch  1 taken 178
+      805:  281-block  0
+call    2 returned 805
+branch  3 taken 245 (fallthrough)
+branch  4 taken 560
+      245:  281-block  1
+call    5 returned 245
+branch  6 taken 151 (fallthrough)
+branch  7 taken 94
+      151:  281-block  2
+      832:  281-block  3
+      983:  281-block  4
+branch  8 taken 151 (fallthrough)
+branch  9 taken 832
+      151:  282:        esPosicion = true;
+      151:  282-block  0
+        -:  283:    }
+      983:  284:    return esPosicion;
+      983:  284-block  0
+        -:  285:}
+        -:  286:
+function _Z15es121HorizontalSt4pairIiiERSt6vectorIS_IS0_iESaIS2_EE called 18 returned 100% blocks executed 88%
+       18:  287:bool es121Horizontal(pos p, jugadas &j){
+        -:  288:    // Complejidad temporal de peor caso es O(3*m) = O(m) con m = j.size()
+       18:  289:    bool posicionDeArribaCumple = false;
+       18:  290:    pos posDeArriba = make_pair(p.first,p.second-1);
+       18:  290-block  0
+call    0 returned 18
+branch  1 taken 18 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  290-block  1
+       18:  291:    jugada jugadaAEvaluarArriba = make_pair((posDeArriba),1);
+       18:  291-block  0
+call    0 returned 18
+branch  1 taken 18 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  291-block  1
+      338:  292:    for(int i = 0; i<j.size(); i++){
+       18:  292-block  0
+      320:  292-block  1
+      338:  292-block  2
+call    0 returned 338
+branch  1 taken 320
+branch  2 taken 18 (fallthrough)
+      320:  293:        if(j[i] == jugadaAEvaluarArriba){ // En el peor caso itera toda la secuencia j, es decir itera m veces.
+      320:  293-block  0
+call    0 returned 320
+call    1 returned 320
+branch  2 taken 12 (fallthrough)
+branch  3 taken 308
+       12:  294:            posicionDeArribaCumple = true;
+       12:  294-block  0
+        -:  295:        }
+        -:  296:    }
+        -:  297:    ////////////////////////////////////////////////
+       18:  298:    bool posicionDelMedioCumple = false;
+       18:  299:    pos posDelMedio = p;
+       18:  300:    jugada jugadaAEvaluarMedio = make_pair((posDelMedio),2);
+       18:  300-block  0
+call    0 returned 18
+branch  1 taken 18 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  300-block  1
+      338:  301:    for(int i = 0; i<j.size(); i++){
+       18:  301-block  0
+      320:  301-block  1
+      338:  301-block  2
+call    0 returned 338
+branch  1 taken 320
+branch  2 taken 18 (fallthrough)
+      320:  302:        if(j[i] == jugadaAEvaluarMedio){ // En el peor caso itera toda la secuencia j, es decir itera m veces.
+      320:  302-block  0
+call    0 returned 320
+call    1 returned 320
+branch  2 taken 6 (fallthrough)
+branch  3 taken 314
+        6:  303:            posicionDelMedioCumple = true;
+        6:  303-block  0
+        -:  304:        }
+        -:  305:    }
+        -:  306:    ///////////////////////////////////////////////
+       18:  307:    bool posicionDeAbajoCumple = false;
+       18:  308:    pos posDeAbajo = make_pair(p.first,p.second+1);
+       18:  308-block  0
+call    0 returned 18
+branch  1 taken 18 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  308-block  1
+       18:  309:    jugada jugadaAEvaluarAbajo = make_pair((posDeAbajo),1);
+       18:  309-block  0
+call    0 returned 18
+branch  1 taken 18 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  309-block  1
+      338:  310:    for(int i = 0; i<j.size(); i++){
+       18:  310-block  0
+      320:  310-block  1
+      338:  310-block  2
+call    0 returned 338
+branch  1 taken 320
+branch  2 taken 18 (fallthrough)
+      320:  311:        if(j[i] == jugadaAEvaluarAbajo){ // En el peor caso itera toda la secuencia j, es decir itera m veces.
+      320:  311-block  0
+call    0 returned 320
+call    1 returned 320
+branch  2 taken 18 (fallthrough)
+branch  3 taken 302
+       18:  312:            posicionDeAbajoCumple = true;
+       18:  312-block  0
+        -:  313:        }
+        -:  314:    }
+        -:  315:    //////////////////////////////////////////////
+       18:  316:    bool hay121Horizontal = posicionDeArribaCumple && posicionDelMedioCumple && posicionDeAbajoCumple;
+       18:  316-block  0
+branch  0 taken 12 (fallthrough)
+branch  1 taken 6
+       12:  316-block  1
+branch  2 taken 6 (fallthrough)
+branch  3 taken 6
+        6:  316-block  2
+branch  4 taken 6 (fallthrough)
+branch  5 taken 0
+        6:  316-block  3
+       12:  316-block  4
+       18:  317:    return hay121Horizontal;
+       18:  317-block  0
+       18:  317-block  1
+        -:  318:}
+        -:  319:
+function _Z13es121VerticalSt4pairIiiERSt6vectorIS_IS0_iESaIS2_EE called 12 returned 100% blocks executed 88%
+       12:  320:bool es121Vertical(pos p, jugadas &j){
+        -:  321:    // Complejidad temporal de peor caso es O(3*m) = O(m) con m = j.size()
+       12:  322:    bool posicionIzquierdaCumple = false;
+       12:  323:    pos posIzquierda = make_pair(p.first-1,p.second);
+       12:  323-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  323-block  1
+       12:  324:    jugada jugadaAEvaluarIzquierda = make_pair((posIzquierda),1);
+       12:  324-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  324-block  1
+      224:  325:    for(int i = 0; i<j.size(); i++){ // En el peor caso itera toda la secuencia j, es decir itera m veces.
+       12:  325-block  0
+      212:  325-block  1
+      224:  325-block  2
+call    0 returned 224
+branch  1 taken 212
+branch  2 taken 12 (fallthrough)
+      212:  326:        if(j[i] == jugadaAEvaluarIzquierda){
+      212:  326-block  0
+call    0 returned 212
+call    1 returned 212
+branch  2 taken 6 (fallthrough)
+branch  3 taken 206
+        6:  327:            posicionIzquierdaCumple = true;
+        6:  327-block  0
+        -:  328:        }
+        -:  329:    }
+        -:  330:    ////////////////////////////////////////////////
+       12:  331:    bool posicionDelMedioCumple = false;
+       12:  332:    pos posDelMedio = p;
+       12:  333:    jugada jugadaAEvaluarMedio = make_pair((posDelMedio),2);
+       12:  333-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  333-block  1
+      224:  334:    for(int i = 0; i<j.size(); i++){ // En el peor caso itera toda la secuencia j, es decir itera m veces.
+       12:  334-block  0
+      212:  334-block  1
+      224:  334-block  2
+call    0 returned 224
+branch  1 taken 212
+branch  2 taken 12 (fallthrough)
+      212:  335:        if(j[i] == jugadaAEvaluarMedio){
+      212:  335-block  0
+call    0 returned 212
+call    1 returned 212
+branch  2 taken 6 (fallthrough)
+branch  3 taken 206
+        6:  336:            posicionDelMedioCumple = true;
+        6:  336-block  0
+        -:  337:        }
+        -:  338:    }
+        -:  339:    ///////////////////////////////////////////////
+       12:  340:    bool posicionDerechaCumple = false;
+       12:  341:    pos posDerecha = make_pair(p.first+1,p.second);
+       12:  341-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  341-block  1
+       12:  342:    jugada jugadaAEvaluarDerecha = make_pair((posDerecha),1);
+       12:  342-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  342-block  1
+      224:  343:    for(int i = 0; i<j.size(); i++){ // En el peor caso itera toda la secuencia j, es decir itera m veces.
+       12:  343-block  0
+      212:  343-block  1
+      224:  343-block  2
+call    0 returned 224
+branch  1 taken 212
+branch  2 taken 12 (fallthrough)
+      212:  344:        if(j[i] == jugadaAEvaluarDerecha){
+      212:  344-block  0
+call    0 returned 212
+call    1 returned 212
+branch  2 taken 12 (fallthrough)
+branch  3 taken 200
+       12:  345:            posicionDerechaCumple = true;
+       12:  345-block  0
+        -:  346:        }
+        -:  347:    }
+        -:  348:    //////////////////////////////////////////////
+       12:  349:    bool hay121Horizontal = posicionIzquierdaCumple && posicionDelMedioCumple && posicionDerechaCumple;
+       12:  349-block  0
+branch  0 taken 6 (fallthrough)
+branch  1 taken 6
+        6:  349-block  1
+branch  2 taken 6 (fallthrough)
+branch  3 taken 0
+        6:  349-block  2
+branch  4 taken 6 (fallthrough)
+branch  5 taken 0
+        6:  349-block  3
+        6:  349-block  4
+       12:  350:    return hay121Horizontal;
+       12:  350-block  0
+       12:  350-block  1
+        -:  351:}
+        -:  352:
+function _Z15esAdyacenteA121St4pairIiiERSt6vectorIS_IS0_iESaIS2_EE called 12 returned 100% blocks executed 76%
+       12:  353:bool esAdyacenteA121(pos p, jugadas &j){
+        -:  354:    /* Complejidad temporal de peor caso del orden O(m) (en el peor caso, es121horizontal
+        -:  355:     * así como es121vertical tienen complejidad O(3*m), o lo que es lo mismo O(m) con m = j.size() */
+       12:  356:    pos posHorizontal1 = make_pair(p.first-1,p.second);
+       12:  356-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  356-block  1
+       12:  357:    pos posHorizontal2 = make_pair(p.first+1,p.second);
+       12:  357-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  357-block  1
+       12:  358:    pos posVertical1 = make_pair(p.first,p.second-1);
+       12:  358-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  358-block  1
+       12:  359:    pos posVertical2 = make_pair(p.first,p.second+1);
+       12:  359-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  359-block  1
+        -:  360:    bool esAdyacente = // Cada comparación tiene complejidad de peor caso del orden O(m) con m = j.size()
+       12:  361:            (es121Horizontal(posHorizontal1, j) ||
+       12:  361-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+        6:  362:            es121Horizontal(posHorizontal2, j) ||
+        6:  362-block  0
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0 (throw)
+        6:  362-block  1
+branch  3 taken 6 (fallthrough)
+branch  4 taken 0
+      24*:  363:            es121Vertical(posVertical1, j) ||
+       12:  363-block  0
+branch  0 taken 6 (fallthrough)
+branch  1 taken 6
+        6:  363-block  1
+call    2 returned 6
+branch  3 taken 6 (fallthrough)
+branch  4 taken 0 (throw)
+        6:  363-block  2
+branch  5 taken 6 (fallthrough)
+branch  6 taken 0
+       12:  363-block  3
+    %%%%%:  363-block  4
+        6:  364:            es121Vertical(posVertical2, j));
+        6:  364-block  0
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0 (throw)
+        6:  364-block  1
+branch  3 taken 6 (fallthrough)
+branch  4 taken 0
+       12:  365:    return esAdyacente;
+       12:  365-block  0
+       12:  365-block  1
+        -:  366:}
+        -:  367:
+function _Z20hayPosicionSugeribleRSt6vectorISt4pairIS0_IiiEiESaIS2_EERS_IS1_SaIS1_EERS_IS_IbSaIbEESaISA_EE called 10 returned 100% blocks executed 91%
+       10:  368:bool hayPosicionSugerible(jugadas &j, banderitas &b, tablero &t){
+        -:  369:    // Complejidad temporal de peor caso es del orden O(m*n^2) con m = j.size() y n = t.size()
+       10:  370:    bool posicionSugerible = false;
+       60:  371:    for(int i = 0; i<t.size(); i++){ // En el peor caso itera t.size() = n veces, y por cada iteración
+       10:  371-block  0
+       50:  371-block  1
+       60:  371-block  2
+call    0 returned 60
+branch  1 taken 50
+branch  2 taken 10 (fallthrough)
+        -:  372:        // vuelve a iterar n veces. Es decir, en el peor caso itera m*n^2 veces (O(m*n^2))
+      300:  373:        for(int k = 0; k<t.size(); k++){ // En el peor caso itera t.size() = n veces. A su vez, cada
+       50:  373-block  0
+      250:  373-block  1
+      300:  373-block  2
+call    0 returned 300
+branch  1 taken 250
+branch  2 taken 50 (fallthrough)
+        -:  374:            // iteración de estas tiene complejidad de peor caso del orden O(m) con m = j.size().
+        -:  375:            // En total, este ciclo tiene complejidad de peor caso del orden O(n*m).
+      250:  376:            pos p  = make_pair(i,k);
+      250:  376-block  0
+call    0 returned 250
+branch  1 taken 250 (fallthrough)
+branch  2 taken 0 (throw)
+      250:  377:            if(esPosicionSinJugarYSinBanderita(p,j,b,t) && esAdyacenteA121(p,j)){
+      250:  377-block  0
+call    0 returned 250
+branch  1 taken 250 (fallthrough)
+branch  2 taken 0 (throw)
+      250:  377-block  1
+branch  3 taken 6 (fallthrough)
+branch  4 taken 244
+        6:  377-block  2
+call    5 returned 6
+branch  6 taken 6 (fallthrough)
+branch  7 taken 0 (throw)
+        6:  377-block  3
+branch  8 taken 6 (fallthrough)
+branch  9 taken 0
+        6:  377-block  4
+      244:  377-block  5
+      250:  377-block  6
+branch 10 taken 6 (fallthrough)
+branch 11 taken 244
+        -:  378:                /*
+        -:  379: * Si bien la función esPosicionSinJugarYSinBanderita(p,j,b,t) tiene complejidad O(g+m), la complejidad
+        -:  380: * de peor caso de esAdyacenteA121(p,j) es del orden de O(m), con m = j.size() ya que por cada comparación que
+        -:  381: * hace para comparar si es121horizontal(p,j) o es121Vertical(p,j) tiene complejidad temporal de peor caso
+        -:  382: * del orden O(m) y esta es la complejidad temporal de cada comparación.
+        -:  383: */
+        6:  384:                posicionSugerible = true;
+        6:  384-block  0
+        -:  385:            }
+        -:  386:        }
+        -:  387:    }
+       10:  388:    return posicionSugerible;
+       10:  388-block  0
+       10:  388-block  1
+        -:  389:}
+        -:  390:
+        -:  391:
+        -:  392:// ##############################################################################################################################################################
+        -:  393:
+        -:  394:

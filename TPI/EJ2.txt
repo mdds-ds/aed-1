@@ -1,0 +1,165 @@
+void cambiarBanderita(tablero& t, jugadas& j, pos p, banderitas& b) {
+    if(esBanderita(p,b)){ //Sacar la banderita.
+        for(int i = 0;i<b.size();i++){
+            if(b[i] == p){
+                pos c = b[b.size()-1];
+                b[b.size()-1] = b[i];
+                b[i]=c;
+                b.pop_back();
+            }
+        }
+    }
+    if(esPosicionSinJugarYSinBanderita(p,j,b,t)){ // Poner la banderita.
+        b.push_back(p);
+    }
+}
+
+
+
+
+################################################ AUXILIARES #######################################################
+
+bool posicionValida(pos p, int n){
+    bool res = (coordenadaValida(get<0>(p),n) && coordenadaValida(get<1>(p),n));
+    return res;
+}
+
+bool fueJugada(pos p, jugadas &j){
+    bool res = false;
+    for(int i = 0; i<j.size(); i++){
+        if(get<0>(j[i]) == p){
+            res = true;
+        }
+    }
+    return res;
+}
+
+bool esBanderita(pos p, banderitas &b){
+    bool bandera = false;
+    for(int i = 0; i<b.size(); i++){
+        if(b[i] == p){
+            bandera = true;
+        }
+    }
+    return bandera;
+}
+
+bool esPosicionSinJugarYSinBanderita(pos p, jugadas &j, banderitas &b, tablero &t){
+    //  Complejidad de peor caso del orden O(1)
+    bool esPosicion = false;
+    if(posicionValida(p,t.size()) &&
+    !fueJugada(p,j) && !esBanderita(p,b)){
+        esPosicion = true;
+    }
+    return esPosicion;
+}
+
+bool esPermutacion(banderitas &b1, banderitas &b2){
+    bool mismoTamano = (b1.size() == b2.size());
+    bool banderitasAparecenMismasVeces = true;
+    for(int i=0;i<b1.size();i++){
+        int apariciones_b1 = 1;
+        int apariciones_b2 = 0;
+        for(int k = 0; k < b2.size(); k++){
+            if(b2[k] == b1[i]){
+                apariciones_b2++;
+            }
+        }
+        if(apariciones_b1 != apariciones_b2){
+            banderitasAparecenMismasVeces = false;
+        }
+    }
+    bool permutacion = mismoTamano && banderitasAparecenMismasVeces;
+    return permutacion;
+}
+
+bool plantaBanderita(pos p_plantar, banderitas &b, banderitas &b0){
+    bool agregaPosicion = esBanderita(p_plantar,b);
+    bool todaBanderaDeB0EstaEnB = true;
+    for(int i=0;i<b0.size();i++){
+        int apariciones_b0 = 1;
+        int apariciones_b = 0;
+        for(int k=0;k<b.size();k++){
+            if(b0[i] == b[i]){
+                apariciones_b++;
+            }
+        }
+        if(apariciones_b0 > apariciones_b){
+            todaBanderaDeB0EstaEnB = false;
+        }
+    }
+    bool res = (b.size() == b0.size()+1) && agregaPosicion && todaBanderaDeB0EstaEnB;
+    return res;
+}
+
+bool sacaBanderita(pos p_sacar, banderitas &b, banderitas &b0){
+    bool eliminaPosicion = true;
+    for(int i = 0;i<b0.size();i++){
+        if(p_sacar!=b0[i] && !esBanderita(b0[i],b)){
+            eliminaPosicion = false;
+        }
+    }
+    bool res = (b.size() == b0.size()-1) && eliminaPosicion;
+    return res;
+}
+
+####################################################### TESTS ###################################################
+
+// ┌───┬───┬───┬───┬───┐
+// │ 1 │ * │ 2 │ 1 │ 1 │
+// ├───┼───┼───┼───┼───┤
+// │ 2 │ 2 │ 3 │ * │ 1 │
+// ├───┼───┼───┼───┼───┤
+// │ 1 │ * │ 2 │ 1 │ 1 │
+// ├───┼───┼───┼───┼───┤
+// │ 2 │ 3 │ 2 │ 1 │ 0 │
+// ├───┼───┼───┼───┼───┤
+// │ * │ 2 │ * │ 1 │ 0 │
+// └───┴───┴───┴───┴───┘
+
+tablero t_cambiar_Banderita = {
+        { cVACIA,  cMINA,  cVACIA, cVACIA, cVACIA },
+        { cVACIA, cVACIA, cVACIA, cMINA,  cVACIA },
+        { cVACIA, cMINA,  cVACIA, cVACIA, cVACIA },
+        { cVACIA, cVACIA, cVACIA, cVACIA, cVACIA },
+        { cMINA,  cVACIA, cMINA,  cVACIA, cVACIA },
+};
+jugadas jugadasValidas_cambiarBanderita = {
+        jugada(pos(0, 2), 2),jugada(pos(0, 4), 1),
+        jugada(pos(1, 0), 2),jugada(pos(1, 1), 2),jugada(pos(1, 2), 3),jugada(pos(1, 4), 1),
+        jugada(pos(2, 0), 1),jugada(pos(2, 2), 2),jugada(pos(2, 3), 1),
+        jugada(pos(3, 0), 2),jugada(pos(3, 1), 3),jugada(pos(3, 2), 2),jugada(pos(3, 3), 1),jugada(pos(3, 4), 0),
+        jugada(pos(4, 1), 2),jugada(pos(4, 3), 1),jugada(pos(4, 4), 0),
+};
+banderitas b_ponerBanderita_antes={
+        pos(0,0),pos(3,3),pos(4,4),pos(1,2),pos(3,2)
+};
+
+banderitas b_ponerBanderita_despues={
+        pos(0,0),pos(3,3),pos(4,4),pos(1,2),pos(3,2),pos(2,4)
+};
+banderitas b_sacarBanderita_antes={
+        pos(0,0),pos(3,3),pos(4,4),pos(0,2),pos(1,2),pos(3,2)
+};
+banderitas b_sacarBanderita_despues={
+        pos(0,0),pos(3,3),pos(4,4),pos(1,2),pos(3,2)
+};
+
+
+TEST(cambiarBanderitaTEST, sacarBanderita){
+    jugadas j = jugadasValidas_cambiarBanderita;
+    pos p8 = pos(0,2);
+    banderitas b0 = b_sacarBanderita_antes;
+    cambiarBanderita(t_cambiar_Banderita,j,p8,b_sacarBanderita_antes);
+    ASSERT_TRUE(esPermutacion(b_sacarBanderita_antes,b_sacarBanderita_despues));
+    ASSERT_TRUE(sacaBanderita(p8,b_sacarBanderita_despues,b0));
+}
+
+TEST(cambiarBanderitaTEST, ponerBanderita){
+    jugadas j1=jugadasValidas_cambiarBanderita;
+    pos p9= pos(2,4);
+    banderitas b0 = b_ponerBanderita_antes;
+    cambiarBanderita(t_cambiar_Banderita,j1,p9,b_ponerBanderita_antes);
+    ASSERT_EQ(b_ponerBanderita_antes,b_ponerBanderita_despues);
+    ASSERT_TRUE(plantaBanderita(p9,b_ponerBanderita_antes,b0));
+}
